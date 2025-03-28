@@ -1,0 +1,36 @@
+@import "tailwindcss";
+@layer theme ,base, components, utilities;
+@theme {
+    --color-primary: var(--color-green-900);
+    --color-secondary: var(--color-blue-500);
+}
+
+
+@layer components {
+      p {
+        font-size: var(--text-base);
+        color: var(--color-gray-700);
+      }
+      h1 {
+        font-size: var(--text-2xl);
+        font-weight: var(--font-weight-semibold);
+        color: var(--color-primary);
+      }
+      h2 {
+        font-size: var(--text-xl);
+        font-weight: var(--font-weight-semibold);
+        color: var(--color-primary);
+      }
+      header {
+         background-color: cornflowerblue;
+      }
+      nav {
+         background-color: cornflowerblue;
+      }
+      .mobile-menu {
+         background-color: cornflowerblue;
+      }
+      footer {
+        background-color: cornflowerblue;
+      }
+  }
