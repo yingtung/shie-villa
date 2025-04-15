@@ -1,36 +1,57 @@
-@import "tailwindcss";
+@import 'tailwindcss';
+@import url('https://fonts.googleapis.com/css2?family=Birthstone&display=swap');
 @layer theme ,base, components, utilities;
 @theme {
-    --color-primary: var(--color-green-900);
-    --color-secondary: var(--color-blue-500);
+  --color-primary: var(--color-green-900);
+  --color-secondary: var(--color-blue-500);
+  --border-color: #8c9c02;
+  --background-color: #b5c16a;
+  --button-color: #61a1ab;
+  --button-hover-color: #91cdd9;
 }
 
-
 @layer components {
-      p {
-        font-size: var(--text-base);
-        color: var(--color-gray-700);
-      }
-      h1 {
-        font-size: var(--text-2xl);
-        font-weight: var(--font-weight-semibold);
-        color: var(--color-primary);
-      }
-      h2 {
-        font-size: var(--text-xl);
-        font-weight: var(--font-weight-semibold);
-        color: var(--color-primary);
-      }
-      header {
-         background-color: cornflowerblue;
-      }
-      nav {
-         background-color: cornflowerblue;
-      }
-      .mobile-menu {
-         background-color: cornflowerblue;
-      }
-      footer {
-        background-color: cornflowerblue;
-      }
+  p {
+    font-size: var(--text-base);
+    color: var(--color-gray-700);
   }
+  h1 {
+    font-size: var(--text-2xl);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-primary);
+  }
+  h2 {
+    font-size: var(--text-xl);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-primary);
+  }
+  header {
+    background-color: var(--background-color);
+  }
+  nav {
+    background-color: transparent;
+  }
+  .mobile-menu {
+    background-color: var(--background-color);
+  }
+  footer {
+    background-color: var(--background-color);
+  }
+  .border-color {
+    border-color: var(--border-color);
+  }
+  button {
+    background-color: var(--button-color);
+    color: white;
+    border-radius: 1rem;
+    cursor: pointer;
+    &:hover {
+      background-color: var(--button-hover-color);
+    }
+  }
+  .birthstone-regular {
+    font-family: 'Birthstone', cursive;
+    font-weight: 400;
+    font-style: normal;
+  }
+}
