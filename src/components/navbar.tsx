@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Dialog, DialogPanel, PopoverGroup } from '@headlessui/react';
-import Logo from '../images/icon.png';
+import Logo from '../images/whiteLogo.png';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import { Link } from 'gatsby';
 import { useLocation } from '@reach/router';
@@ -12,11 +12,14 @@ const menuList = [
   <Link to="/rooms" className="font-semibold">
     房型介紹
   </Link>,
-  <Link to="/contact" className="font-semibold">
-    聯繫我們
+  <Link to="/facilities" className="font-semibold">
+    民宿設施
   </Link>,
   <Link to="/information" className="font-semibold">
     訂房須知
+  </Link>,
+  <Link to="/contact" className="font-semibold">
+    聯繫我們
   </Link>,
 ];
 
@@ -42,7 +45,7 @@ const Navbar: React.FC = () => {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        shouldBeTransparent ? 'bg-transparent' : 'bg-(--background-color)'
+        shouldBeTransparent ? 'bg-transparent' : 'bg-(--color-primary)'
       }`}
     >
       <nav
@@ -50,9 +53,9 @@ const Navbar: React.FC = () => {
         className="flex max-w-7xl items-center justify-between p-6 lg:px-8 mx-auto"
       >
         <div className="flex lg:flex-1">
-          <a href="/" className="-m-1.5 p-1.5">
+          <a href="/" className="-m-8">
             <span className="sr-only">Shie</span>
-            <img alt="icon" src={Logo} className="h-8 w-auto" />
+            <img alt="icon" src={Logo} className="h-20 w-auto" />
           </a>
         </div>
         <div className="flex lg:hidden">
