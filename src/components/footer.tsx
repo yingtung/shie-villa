@@ -33,7 +33,7 @@ const Footer: React.FC = () => {
               <FontAwesomeIcon icon={faInstagram} className="text-2xl" />
             </a>
           </div>
-          <p>
+          <p className="text-white">
             © {new Date().getFullYear()} 歇Shie Villa民宿. All rights reserved.
           </p>
         </div>

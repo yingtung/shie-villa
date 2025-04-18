@@ -5,7 +5,9 @@ import Layout from '../components/layout';
 const RoomsPage: React.FC<PageProps> = () => {
   return (
     <Layout>
-      <h1>Rooms page</h1>
+      <div className="w-full h-full flex justify-center align-center">
+        <h1>Rooms page</h1>
+      </div>
     </Layout>
   );
 };
