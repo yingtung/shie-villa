@@ -44,7 +44,7 @@ const Navbar: React.FC = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`h-(--navbar-height) fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         shouldBeTransparent ? 'bg-transparent' : 'bg-(--color-primary)'
       }`}
     >

@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Birthstone&display=swap');
 @layer theme ,base, components, utilities;
 @theme {
+  --navbar-height: 72px;
   --color-primary: #b5c16a;
   --color-secondary: #ccdee0;
   --color-highlight: #655eb5;
@@ -33,6 +34,11 @@
   }
   h2 {
     font-size: var(--text-xl);
+    font-weight: var(--font-weight-semibold);
+    color: var(--text-color-primary);
+  }
+  h3 {
+    font-size: var(--text-lg);
     font-weight: var(--font-weight-semibold);
     color: var(--text-color-primary);
   }

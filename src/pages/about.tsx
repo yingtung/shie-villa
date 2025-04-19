@@ -1,30 +1,90 @@
 import type { PageProps } from 'gatsby';
 import React from 'react';
 import Layout from '../components/layout';
+import { StaticImage } from 'gatsby-plugin-image';
 
 const AboutPage: React.FC<PageProps> = () => {
   return (
     <Layout>
-      <div className="pt-[80px]">
-        <h1 className="text-4xl md:text-5xl font-bold mb-8 text-center ">
-          歇 Villa
-        </h1>
-        <div className="max-w-4xl mx-auto px-4">
-          <p className="text-lg leading-relaxed">
-            歇 Villa，以可容納 20
-            人的包棟形式提供寬敞舒適的住宿空間，與一般單間房型的民宿截然不同。在這裡，你享有的是「整棟專屬」的私密空間，讓你的旅行不再被打擾，真正成為一次深刻且難忘的團聚。
-            <br />
-            <br />
-            我們深知在忙碌喧囂的城市生活中，片刻的寧靜與放鬆是如此珍貴。 歇
-            Villa
-            正是為此而生，我們希望帶給每一位旅客一個能夠「歇息」的避風港，讓您徹底放鬆身心靈，拋開煩憂。在這裡，您可以盡情享受與親友的歡聚時光，一同在寬敞的泳池中暢游，釋放活力。在歡樂的夜晚，透過專業的卡拉
-            OK 設備，盡情歌唱，留下美好回憶。 不僅如此，歇 Villa
-            也貼心為親子出遊的家庭打造了專屬的親子遊樂空間，讓孩子們能夠盡情玩耍，大人也能安心享受悠閒時光。
-            <br />
-            <br />
-            在歇
-            Villa充飽電後，願您能再次充滿能量，以更積極的姿態繼續努力生活，享受每一份快樂！
-          </p>
+      <div className="pt-(--navbar-height) min-h-screen">
+        {/* Banner Section */}
+        <div className="relative h-[60vh] w-full overflow-hidden">
+          <StaticImage
+            className="w-full h-full object-cover"
+            src="../images/livingroom.jpg"
+            alt="歇 Villa 主視覺"
+            placeholder="blurred"
+          />
+          <div className="absolute inset-0 flex items-center justify-center">
+            <h1 className="text-6xl font-bold text-white text-center">
+              關於我們
+            </h1>
+          </div>
+        </div>
+
+        {/* Content Section */}
+        <div className="max-w-6xl mx-auto px-6 py-16">
+          <div className="space-y-10">
+            <div className="text-center">
+              <h2 className="text-3xl font-bold mb-6">
+                歡迎來到歇 Villa，您的「歇息」之地
+              </h2>
+              <p className="text-md leading-relaxed">
+                我們深知在忙碌喧囂的城市生活中，片刻的寧靜與放鬆是如此珍貴。
+                <br />
+                我們希望帶給每一位旅客一個能夠「歇息」的避風港，
+                <br />
+                讓您徹底放鬆身心靈，拋開煩憂。
+                <br />
+                在歇 Villa充飽電後，願您能再次充滿能量，
+                <br />
+                以更積極的姿態繼續努力生活，享受每一份快樂！
+              </p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+              <div className="space-y-4 self-center">
+                <h3 className="text-2xl font-semibold text-center">
+                  與親友盡情歡聚，釋放活力時光
+                </h3>
+                <p className="text-md leading-relaxed text-center ">
+                  在這裡，您可以盡情享受與親友的歡聚時光，
+                  <br />
+                  一同在寬敞的泳池中暢游，釋放活力。
+                  <br />
+                  在歡樂的夜晚，透過專業的卡拉 OK 設備，盡情歌唱。
+                </p>
+              </div>
+              <div className="relative h-64 rounded-lg overflow-hidden">
+                <StaticImage
+                  className="w-full h-full object-cover"
+                  src="../images/pool.jpg"
+                  alt="swimming pool"
+                  placeholder="blurred"
+                />
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+              <div className="relative h-64 rounded-lg overflow-hidden order-2 md:order-1">
+                <StaticImage
+                  className="w-full h-full object-cover"
+                  src="../images/slide.jpg"
+                  alt="海港風景"
+                  placeholder="blurred"
+                />
+              </div>
+              <div className="space-y-6 order-1 md:order-2 self-center">
+                <h3 className="text-2xl font-semibold text-center">
+                  大手牽小手，共創歡樂回憶
+                </h3>
+                <p className="text-md leading-relaxed text-center">
+                  歇 Villa為親子出遊的家庭打造了專屬的親子遊樂空間，
+                  <br />
+                  讓孩子們能夠盡情玩耍，大人也能安心享受悠閒時光。
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </Layout>

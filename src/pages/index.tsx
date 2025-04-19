@@ -9,7 +9,7 @@ import ViewMoreButton from '../components/viewMoreButton';
 
 const SectionTitle: React.FC<{ titleText: string }> = ({ titleText }) => {
   return (
-    <h1 className="text-4xl md:text-5xl underline decoration-[#CCDEE0] text-center">
+    <h1 className="text-3xl md:text-4xl underline decoration-[#CCDEE0] text-center">
       {titleText}
     </h1>
   );
@@ -57,12 +57,12 @@ const IndexPage: React.FC<PageProps> = () => {
             className="border-(--border-color) border-base"
           />
         </div>
-        <div className="p-8 md:p-16 md:basis-1/2 ">
+        <div className="p-8 md:p-16 md:basis-1/2 self-center">
           <SectionTitle titleText="關於歇 Villa" />
           <h2 className="text-[#114b5f] my-8 text-center">
             獨棟｜別墅｜庭院｜歡唱
           </h2>
-          <p className="my-8 text-center">
+          <p className="my-8">
             歇 Villa，提供可容納 20
             人的整棟包棟住宿，打造全然專屬的團聚時光。在您忙碌的生活中，歇 Villa
             是讓您徹底放鬆身心、充電再出發的寧靜空間。盡情享受泳池的清涼、卡拉
@@ -76,9 +76,9 @@ const IndexPage: React.FC<PageProps> = () => {
       </div>
       {/* Rooms section */}
       <div className="flex flex-col md:flex-row bg-(--background-color)">
-        <div className="p-8 md:p-16 md:basis-1/2">
+        <div className="p-8 md:p-16 md:basis-1/2 self-center">
           <SectionTitle titleText="精選房型" />
-          <p className="my-8 text-center">
+          <p className="my-8">
             歇 Villa，以20人包棟形式提供住宿空間，和一般單間房型的民宿不同，
             這裡的空間是「整棟專屬」，讓你的旅行真正成為一次深刻的團聚。
             我們希望帶給旅客在忙碌的城市中能夠在這「歇息」一下，放鬆身心靈且充電後獲得滿滿能量，再繼續努力生活、快樂生活。
