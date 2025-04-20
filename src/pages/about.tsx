@@ -2,26 +2,24 @@ import type { PageProps } from 'gatsby';
 import React from 'react';
 import Layout from '../components/layout';
 import { StaticImage } from 'gatsby-plugin-image';
+import Banner from '../components/banner';
 
 const AboutPage: React.FC<PageProps> = () => {
   return (
     <Layout>
       <div className="pt-(--navbar-height) min-h-screen">
         {/* Banner Section */}
-        <div className="relative h-[60vh] w-full overflow-hidden">
-          <StaticImage
-            className="w-full h-full object-cover"
-            src="../images/livingroom.jpg"
-            alt="歇 Villa 主視覺"
-            placeholder="blurred"
-          />
-          <div className="absolute inset-0 flex items-center justify-center">
-            <h1 className="text-6xl font-bold text-white text-center">
-              關於我們
-            </h1>
-          </div>
-        </div>
-
+        <Banner
+          renderImage={() => (
+            <StaticImage
+              className="w-full h-full object-cover"
+              src={'../images/livingroom.jpg'}
+              alt={'about banner'}
+              placeholder="blurred"
+            />
+          )}
+          titleText="關於我們"
+        />
         {/* Content Section */}
         <div className="max-w-6xl mx-auto px-6 py-16">
           <div className="space-y-10">

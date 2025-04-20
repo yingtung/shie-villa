@@ -43,7 +43,7 @@ const IndexPage: React.FC<PageProps> = () => {
             className="text-white text-5xl md:text-6xl font-bold mb-4 cursor-pointer hover:opacity-80 transition-opacity"
             onClick={scrollToAbout}
           >
-            歇 Villa
+            歇Shie Villa
           </h1>
           <h2 className="text-white overline">雲林虎尾包棟住宿首選</h2>
         </div>
@@ -58,7 +58,7 @@ const IndexPage: React.FC<PageProps> = () => {
           />
         </div>
         <div className="p-8 md:p-16 md:basis-1/2 self-center">
-          <SectionTitle titleText="關於歇 Villa" />
+          <SectionTitle titleText="關於歇Shie Villa" />
           <h2 className="text-[#114b5f] my-8 text-center">
             獨棟｜別墅｜庭院｜歡唱
           </h2>
