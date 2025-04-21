@@ -1,25 +1,42 @@
 import type { PageProps } from 'gatsby';
+import { graphql } from 'gatsby';
 import React from 'react';
 import Layout from '../components/layout';
-import { StaticImage } from 'gatsby-plugin-image';
+import { getImage, IGatsbyImageData, StaticImage } from 'gatsby-plugin-image';
 import Banner from '../components/banner';
 
-const AboutPage: React.FC<PageProps> = () => {
+export const query = graphql`
+  query {
+    file: file(relativePath: { eq: "livingroom.jpg" }) {
+      childImageSharp {
+        gatsbyImageData(
+          layout: FULL_WIDTH
+          placeholder: BLURRED
+          formats: [AUTO, WEBP, AVIF]
+        )
+      }
+    }
+  }
+`;
+
+interface AboutPageProps extends PageProps {
+  data: {
+    file: {
+      childImageSharp: {
+        gatsbyImageData: IGatsbyImageData;
+      };
+    };
+  };
+}
+
+const AboutPage: React.FC<AboutPageProps> = ({ data }) => {
+  const img = getImage(data.file?.childImageSharp?.gatsbyImageData);
+  if (!img) return null;
   return (
     <Layout>
       <div className="pt-(--navbar-height) min-h-screen">
         {/* Banner Section */}
-        <Banner
-          renderImage={() => (
-            <StaticImage
-              className="w-full h-full object-cover"
-              src={'../images/livingroom.jpg'}
-              alt={'about banner'}
-              placeholder="blurred"
-            />
-          )}
-          titleText="關於我們"
-        />
+        <Banner image={img} titleText="關於我們" />
         {/* Content Section */}
         <div className="max-w-6xl mx-auto px-6 py-16">
           <div className="space-y-10">
