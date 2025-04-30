@@ -1,11 +1,9 @@
-import * as React from 'react';
-import type { HeadFC, PageProps } from 'gatsby';
-import Layout from '../components/layout';
-import { StaticImage } from 'gatsby-plugin-image';
-import { Button } from '@headlessui/react';
-import { Link } from 'gatsby';
-import Carousel from '../components/carousel';
-import ViewMoreButton from '../components/viewMoreButton';
+import * as React from "react";
+import type { HeadFC, PageProps } from "gatsby";
+import Layout from "../components/layout";
+import { StaticImage } from "gatsby-plugin-image";
+import Carousel from "../components/carousel";
+import ViewMoreButton from "../components/viewMoreButton";
 
 const SectionTitle: React.FC<{ titleText: string }> = ({ titleText }) => {
   return (
@@ -16,15 +14,15 @@ const SectionTitle: React.FC<{ titleText: string }> = ({ titleText }) => {
 };
 
 const scrollToAbout = () => {
-  const aboutSection = document.getElementById('about-section');
-  const navbar = document.querySelector('nav');
+  const aboutSection = document.getElementById("about-section");
+  const navbar = document.querySelector("nav");
   const navbarHeight = navbar ? navbar.offsetHeight : 0;
 
   if (aboutSection) {
     const yOffset = -navbarHeight;
     const y =
       aboutSection.getBoundingClientRect().top + window.scrollY + yOffset;
-    window.scrollTo({ top: y, behavior: 'smooth' });
+    window.scrollTo({ top: y, behavior: "smooth" });
   }
 };
 
@@ -36,7 +34,7 @@ const IndexPage: React.FC<PageProps> = () => {
           src="../images/cover.jpg"
           alt="Cover Image"
           className="absolute w-full h-full object-cover"
-          style={{ filter: 'brightness(0.9)' }}
+          style={{ filter: "brightness(0.9)" }}
         />
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center">
           <h1
@@ -152,6 +150,7 @@ const IndexPage: React.FC<PageProps> = () => {
             <SectionTitle titleText="交通位置" />
             <div className="flex justify-center my-8">
               <iframe
+                title="location"
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3653.0652872841893!2d120.41951677556327!3d23.70936247869836!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346eb19a93072973%3A0x4fea993fcaeb3e9e!2z5q2HU2hpZSBWaUxMQS3pm7LmnpfljIXmo5_msJHlrr8!5e0!3m2!1szh-TW!2stw!4v1744968710441!5m2!1szh-TW!2stw"
                 width="1200"
                 height="500"

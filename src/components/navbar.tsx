@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { Dialog, DialogPanel, PopoverGroup } from '@headlessui/react';
-import Logo from '../images/whiteLogo.png';
-import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
-import { Link } from 'gatsby';
-import { useLocation } from '@reach/router';
+import React, { useState, useEffect } from "react";
+import { Dialog, DialogPanel, PopoverGroup } from "@headlessui/react";
+import Logo from "../images/whiteLogo.png";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import { Link } from "gatsby";
+import { useLocation } from "@reach/router";
 
 const menuList = [
   <Link to="/about" className="font-semibold">
@@ -34,18 +34,18 @@ const Navbar: React.FC = () => {
       setIsScrolled(scrollPosition > 50);
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   // 根據當前路徑決定是否顯示透明背景
-  const isHomePage = location.pathname === '/';
+  const isHomePage = location.pathname === "/";
   const shouldBeTransparent = isHomePage && !isScrolled;
 
   return (
     <header
       className={`h-(--navbar-height) fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        shouldBeTransparent ? 'bg-transparent' : 'bg-(--color-primary)'
+        shouldBeTransparent ? "bg-transparent" : "bg-(--color-primary)"
       }`}
     >
       <nav
