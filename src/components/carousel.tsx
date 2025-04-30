@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { Transition } from '@headlessui/react';
+import React, { useState, useEffect, useRef } from "react";
+import { Transition } from "@headlessui/react";
 
 interface CarouselProps {
   children: React.ReactNode[];
@@ -123,8 +123,8 @@ const Carousel: React.FC<CarouselProps> = ({
               onClick={() => goToSlide(index)}
               className={`rounded-full w-3 h-3 focus:outline-none ${
                 currentIndex === index
-                  ? 'bg-(--color-highlight)'
-                  : 'bg-gray-300'
+                  ? "bg-(--color-highlight)"
+                  : "bg-gray-300"
               }`}
             />
           ))}

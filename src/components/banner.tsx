@@ -1,5 +1,5 @@
-import { GatsbyImage, IGatsbyImageData } from 'gatsby-plugin-image';
-import React from 'react';
+import { GatsbyImage, IGatsbyImageData } from "gatsby-plugin-image";
+import React from "react";
 
 interface BannerProps {
   image: IGatsbyImageData;
@@ -8,7 +8,7 @@ interface BannerProps {
 
 const Banner: React.FC<BannerProps> = ({ image, titleText }) => {
   return (
-    <div className="relative h-[48vh] w-full overflow-hidden">
+    <div className="relative h-[40vh] w-full overflow-hidden">
       <GatsbyImage
         image={image}
         alt="Banner image"

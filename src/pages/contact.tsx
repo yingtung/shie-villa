@@ -1,7 +1,7 @@
-import { graphql, type PageProps } from 'gatsby';
-import React from 'react';
-import Layout from '../components/layout';
-import { GatsbyImage, getImage, IGatsbyImageData } from 'gatsby-plugin-image';
+import { graphql, type PageProps } from "gatsby";
+import React from "react";
+import Layout from "../components/layout";
+import { GatsbyImage, getImage, IGatsbyImageData } from "gatsby-plugin-image";
 export const query = graphql`
   query AllRoomsQuery {
     allSanityRoom {

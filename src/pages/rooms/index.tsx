@@ -1,8 +1,8 @@
-import { graphql, type PageProps } from 'gatsby';
-import React from 'react';
-import Layout from '../../components/layout';
-import Banner from '../../components/banner';
-import { GatsbyImage, getImage, IGatsbyImageData } from 'gatsby-plugin-image';
+import { graphql, Link, type PageProps } from "gatsby";
+import React from "react";
+import Layout from "../../components/layout";
+import Banner from "../../components/banner";
+import { GatsbyImage, getImage, IGatsbyImageData } from "gatsby-plugin-image";
 export const query = graphql`
   query {
     banner: file(relativePath: { eq: "livingroom.jpg" }) {
@@ -62,32 +62,34 @@ interface RooomsPageProps extends PageProps {
 const RoomsPage: React.FC<RooomsPageProps> = ({ data }) => {
   const bannerImg = getImage(data.banner?.childImageSharp?.gatsbyImageData);
   const rooms = data.allSanityRoom.nodes;
-  if (!bannerImg || !rooms.length) return null;
   return (
     <Layout>
       <div className="pt-(--navbar-height) min-h-screen">
         {/* Banner Section */}
-        <Banner image={bannerImg} titleText="房型介紹" />
+        {bannerImg && <Banner image={bannerImg} titleText="房型介紹" />}
         <div className="max-w-5xl mx-auto px-6 py-16">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            {rooms.map((room) => {
-              const roomImg = getImage(room.images[0]?.asset.gatsbyImageData);
-              if (!roomImg) return null;
-              return (
-                <div className="relative rounded-lg overflow-hidden group">
-                  <GatsbyImage
-                    image={roomImg}
-                    alt="room 101"
-                    className="w-full h-full transition-transform duration-300 group-hover:scale-120"
-                  />
-                  <div className="absolute inset-0 flex items-center justify-center bg-black/30 cursor-pointer">
-                    <span className="text-4xl font-bold text-white">
-                      {room.name}
-                    </span>
-                  </div>
-                </div>
-              );
-            })}
+            {rooms.length > 0 &&
+              rooms.map((room) => {
+                const roomImg = getImage(room.images[0]?.asset.gatsbyImageData);
+                if (!roomImg) return null;
+                return (
+                  <Link to={room.slug.current}>
+                    <div className="relative rounded-lg overflow-hidden group">
+                      <GatsbyImage
+                        image={roomImg}
+                        alt="room 101"
+                        className="w-full h-full transition-transform duration-300 group-hover:scale-120"
+                      />
+                      <div className="absolute inset-0 flex items-center justify-center bg-black/30 cursor-pointer">
+                        <span className="text-4xl font-bold text-white">
+                          {room.name}
+                        </span>
+                      </div>
+                    </div>
+                  </Link>
+                );
+              })}
           </div>
         </div>
       </div>
