@@ -1,6 +1,6 @@
-import type { PageProps } from "gatsby";
-import React from "react";
-import Layout from "../components/layout";
+import type { PageProps } from 'gatsby';
+import React from 'react';
+import Layout from '../components/layout';
 
 const AboutPage: React.FC<PageProps> = () => {
   return (

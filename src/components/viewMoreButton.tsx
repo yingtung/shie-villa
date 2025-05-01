@@ -1,6 +1,6 @@
-import { Button } from "@headlessui/react";
-import { Link } from "gatsby";
-import React from "react";
+import { Button } from '@headlessui/react';
+import { Link } from 'gatsby';
+import React from 'react';
 
 interface ViewMoreButtonProps {
   linkTo: string;

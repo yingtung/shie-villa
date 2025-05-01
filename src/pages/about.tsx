@@ -1,9 +1,9 @@
-import type { PageProps } from "gatsby";
-import { graphql } from "gatsby";
-import React from "react";
-import Layout from "../components/layout";
-import { getImage, IGatsbyImageData, StaticImage } from "gatsby-plugin-image";
-import Banner from "../components/banner";
+import type { PageProps } from 'gatsby';
+import { graphql } from 'gatsby';
+import React from 'react';
+import Layout from '../components/layout';
+import { getImage, IGatsbyImageData, StaticImage } from 'gatsby-plugin-image';
+import Banner from '../components/banner';
 
 export const query = graphql`
   query {
