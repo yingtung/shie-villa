@@ -1,8 +1,8 @@
-import { graphql, Link, type PageProps } from "gatsby";
-import React from "react";
-import Layout from "../../components/layout";
-import Banner from "../../components/banner";
-import { GatsbyImage, getImage, IGatsbyImageData } from "gatsby-plugin-image";
+import { graphql, Link, type PageProps } from 'gatsby';
+import React from 'react';
+import Layout from '../../components/layout';
+import Banner from '../../components/banner';
+import { GatsbyImage, getImage, IGatsbyImageData } from 'gatsby-plugin-image';
 export const query = graphql`
   query {
     banner: file(relativePath: { eq: "livingroom.jpg" }) {

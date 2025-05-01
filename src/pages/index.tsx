@@ -1,9 +1,9 @@
-import * as React from "react";
-import type { HeadFC, PageProps } from "gatsby";
-import Layout from "../components/layout";
-import { StaticImage } from "gatsby-plugin-image";
-import Carousel from "../components/carousel";
-import ViewMoreButton from "../components/viewMoreButton";
+import * as React from 'react';
+import type { HeadFC, PageProps } from 'gatsby';
+import Layout from '../components/layout';
+import { StaticImage } from 'gatsby-plugin-image';
+import Carousel from '../components/carousel';
+import ViewMoreButton from '../components/viewMoreButton';
 
 const SectionTitle: React.FC<{ titleText: string }> = ({ titleText }) => {
   return (
@@ -14,15 +14,15 @@ const SectionTitle: React.FC<{ titleText: string }> = ({ titleText }) => {
 };
 
 const scrollToAbout = () => {
-  const aboutSection = document.getElementById("about-section");
-  const navbar = document.querySelector("nav");
+  const aboutSection = document.getElementById('about-section');
+  const navbar = document.querySelector('nav');
   const navbarHeight = navbar ? navbar.offsetHeight : 0;
 
   if (aboutSection) {
     const yOffset = -navbarHeight;
     const y =
       aboutSection.getBoundingClientRect().top + window.scrollY + yOffset;
-    window.scrollTo({ top: y, behavior: "smooth" });
+    window.scrollTo({ top: y, behavior: 'smooth' });
   }
 };
 
@@ -34,7 +34,7 @@ const IndexPage: React.FC<PageProps> = () => {
           src="../images/cover.jpg"
           alt="Cover Image"
           className="absolute w-full h-full object-cover"
-          style={{ filter: "brightness(0.9)" }}
+          style={{ filter: 'brightness(0.9)' }}
         />
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center">
           <h1
@@ -86,7 +86,7 @@ const IndexPage: React.FC<PageProps> = () => {
           </div>
         </div>
         <div className="p-8 md:p-16 md:basis-1/2 md:order-last order-first">
-          <Carousel autoplay autoplayInterval={5000}>
+          <Carousel autoplay autoplayInterval={5000} height={96}>
             <StaticImage
               src="../images/demo01.jpg"
               alt="Slide 1"

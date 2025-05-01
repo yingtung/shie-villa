@@ -1,5 +1,5 @@
-import { GatsbyImage, IGatsbyImageData } from "gatsby-plugin-image";
-import React from "react";
+import { GatsbyImage, IGatsbyImageData } from 'gatsby-plugin-image';
+import React from 'react';
 
 interface BannerProps {
   image: IGatsbyImageData;
