@@ -42,7 +42,7 @@ const AboutPage: React.FC<AboutPageProps> = ({ data }) => {
           <div className="space-y-10">
             <div className="text-center">
               <h2 className="text-3xl font-bold mb-6">
-                歡迎來到歇 Villa，您的「歇息」之地
+                歡迎來到歇Shie Villa，您的「歇息」之地
               </h2>
               <p className="text-md leading-relaxed">
                 我們深知在忙碌喧囂的城市生活中，片刻的寧靜與放鬆是如此珍貴。
@@ -51,7 +51,7 @@ const AboutPage: React.FC<AboutPageProps> = ({ data }) => {
                 <br />
                 讓您徹底放鬆身心靈，拋開煩憂。
                 <br />
-                在歇 Villa充飽電後，願您能再次充滿能量，
+                在歇Shie Villa充飽電後，願您能再次充滿能量，
                 <br />
                 以更積極的姿態繼續努力生活，享受每一份快樂！
               </p>
@@ -93,7 +93,7 @@ const AboutPage: React.FC<AboutPageProps> = ({ data }) => {
                   大手牽小手，共創歡樂回憶
                 </h3>
                 <p className="text-md leading-relaxed text-center">
-                  歇 Villa為親子出遊的家庭打造了專屬的親子遊樂空間，
+                  歇Shie Villa為親子出遊的家庭打造了專屬的親子遊樂空間，
                   <br />
                   讓孩子們能夠盡情玩耍，大人也能安心享受悠閒時光。
                 </p>
