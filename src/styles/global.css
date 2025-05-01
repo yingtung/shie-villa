@@ -5,7 +5,7 @@
   --navbar-height: 72px;
   --color-primary: #b5c16a;
   --color-secondary: #ccdee0;
-  --color-highlight: #655eb5;
+  --color-highlight: #007bff;
   --text-color-primary: var(--color-green-900);
   --text-color-secondary: var(--color-green-500);
   --border-color: #8c9c02;
@@ -24,6 +24,10 @@
 
 @layer components {
   p {
+    font-size: var(--text-base);
+    color: var(--color-gray-700);
+  }
+  li {
     font-size: var(--text-base);
     color: var(--color-gray-700);
   }

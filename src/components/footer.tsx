@@ -10,7 +10,7 @@ const Footer: React.FC = () => {
     <footer className="p-4 text-white w-full">
       <div className="container mx-auto flex justify-between items-center">
         <div>
-          <p className="text-white">歇 Villa民宿</p>
+          <p className="text-white">歇Shie Villa民宿</p>
           <p className="text-white">雲林縣虎尾鎮新吉里155號</p>
           <p className="text-white">雲林縣民宿 102</p>
         </div>
