@@ -1,32 +1,8 @@
-import { graphql, type PageProps } from 'gatsby';
+import type { PageProps } from 'gatsby';
 import React from 'react';
 import Layout from '../components/layout';
-import { getImage, IGatsbyImageData } from 'gatsby-plugin-image';
 import Banner from '../components/banner';
 import { Tab, TabGroup, TabList, TabPanel, TabPanels } from '@headlessui/react';
-
-export const query = graphql`
-  query {
-    banner: file(relativePath: { eq: "livingroom.jpg" }) {
-      childImageSharp {
-        gatsbyImageData(
-          layout: FULL_WIDTH
-          placeholder: BLURRED
-          formats: [AUTO, WEBP, AVIF]
-        )
-      }
-    }
-  }
-`;
-interface InformationPageProps extends PageProps {
-  data: {
-    banner: {
-      childImageSharp: {
-        gatsbyImageData: IGatsbyImageData;
-      };
-    };
-  };
-}
 
 const tabMenu = [
   { key: 'tab1', title: '入/退住須知' },
@@ -34,14 +10,13 @@ const tabMenu = [
   { key: 'tab3', title: '匯款資訊' },
   { key: 'tab4', title: '取消或延期' },
 ];
-const AboutPage: React.FC<InformationPageProps> = ({ data }) => {
-  const bannerImg = getImage(data.banner?.childImageSharp?.gatsbyImageData);
+const InformationPage: React.FC<PageProps> = () => {
   return (
     <Layout>
       <div>
         <div className="pt-(--navbar-height) min-h-screen">
           {/* Banner Section */}
-          {bannerImg && <Banner image={bannerImg} titleText="訂房須知" />}
+          <Banner titleText="訂房須知" />
           <div className="max-w-6xl mx-auto px-6 py-16">
             <TabGroup>
               <TabList className="flex gap-4 justify-center">
@@ -223,4 +198,4 @@ const AboutPage: React.FC<InformationPageProps> = ({ data }) => {
   );
 };
 
-export default AboutPage;
+export default InformationPage;
