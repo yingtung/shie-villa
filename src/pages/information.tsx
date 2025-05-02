@@ -49,7 +49,11 @@ const AboutPage: React.FC<InformationPageProps> = ({ data }) => {
                   return (
                     <Tab
                       key={key}
-                      className="rounded-lg px-3 py-1 text-lg bg-(--button-color)"
+                      className={`rounded-lg px-3 py-1 text-lg bg-(--button-color)
+     focus:outline-none focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2
+     data-hover:bg-(--button-hover-color)/40 hover:bg-(--button-hover-color)/40
+     data-selected:bg-(--button-hover-color) data-selected:data-hover:bg-(--button-hover-color)/80
+     transition-colors duration-200 ease-in-out`}
                     >
                       {title}
                     </Tab>
