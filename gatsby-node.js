@@ -38,7 +38,6 @@ exports.createPages = async ({ graphql, actions }) => {
 
   // Create a page for each blog post
   rooms.forEach((room) => {
-    console.log(room.slug.current);
     createPage({
       path: `/rooms/${room.slug.current}`,
       component: roomTemplate,

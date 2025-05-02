@@ -34,7 +34,6 @@ interface RoomProps {
 const RoomDetails: React.FC<RoomProps> = ({ data, pageContext }) => {
   const { sanityRoom } = data;
   const bannerImg = getImage(data.banner?.childImageSharp?.gatsbyImageData);
-  console.log(`DDD ${sanityRoom.description[1].children[0].text}`);
 
   return (
     <Layout>
