@@ -1,76 +1,69 @@
 import { graphql, type PageProps } from 'gatsby';
 import React from 'react';
 import Layout from '../components/layout';
-import {
-  GatsbyImage,
-  getImage,
-  IGatsbyImageData,
-  StaticImage,
-} from 'gatsby-plugin-image';
+import { getImage, IGatsbyImageData, StaticImage } from 'gatsby-plugin-image';
+import Banner from '../components/banner';
 export const query = graphql`
-  query AllRoomsQuery {
-    allSanityRoom {
-      nodes {
-        name
-        slug {
-          current
-        }
-        images {
-          asset {
-            gatsbyImageData(
-              width: 400
-              placeholder: BLURRED
-              formats: [AUTO, WEBP]
-            )
-          }
-          _key # Unique key for each image in the array (optional, but useful for React keys)
-        }
+  query {
+    banner: file(relativePath: { eq: "livingroom.jpg" }) {
+      childImageSharp {
+        gatsbyImageData(
+          layout: FULL_WIDTH
+          placeholder: BLURRED
+          formats: [AUTO, WEBP, AVIF]
+        )
       }
     }
   }
 `;
-interface Asset {
-  asset: {
-    gatsbyImageData: IGatsbyImageData;
-  };
-}
 
 interface ContactPageProps extends PageProps {
   data: {
-    allSanityRoom: {
-      nodes: {
-        images: Asset[];
-        name: string;
-        slug: {
-          current: string;
-        };
-      }[];
+    banner: {
+      childImageSharp: {
+        gatsbyImageData: IGatsbyImageData;
+      };
     };
   };
 }
 
 const ContactPage: React.FC<ContactPageProps> = ({ data }) => {
-  const rooms = data.allSanityRoom.nodes;
+  const bannerImg = getImage(data.banner?.childImageSharp?.gatsbyImageData);
   return (
     <Layout>
       <div className="pt-(--navbar-height) min-h-screen">
-        <h1>Contact page</h1>
-        <div className="grid grid-cols-1 md:grid-cols-2  pt-8">
-          <div className="justify-items-center pt-2">
-            <StaticImage
-              src={'../images/fbQrCode.png'}
-              alt={'FB QR code'}
-              height={160}
-            />
-            <h3>FB 粉絲專頁QR Code</h3>
-          </div>
-          <div className="justify-items-center pt-2">
-            <StaticImage
-              src={'../images/igQrCode.jpg'}
-              alt={'IG QR code'}
-              height={160}
-            />
-            <h3>IG 粉絲專頁QR Code</h3>
+        {/* Banner Section */}
+        {bannerImg && <Banner image={bannerImg} titleText="聯絡我們" />}
+        <div className="max-w-6xl mx-auto px-6 py-16">
+          <div className="grid grid-cols-1 md:grid-cols-2">
+            <div>
+              <h1 className="pb-4">社群媒體</h1>
+              <div className="grid grid-cols-1 md:grid-cols-2">
+                <div>
+                  <StaticImage
+                    src={'../images/fbQrCode.png'}
+                    alt={'FB QR code'}
+                    height={160}
+                  />
+                  <h3 className="pb-4">FB 粉絲專頁QR Code</h3>
+                </div>
+                <div>
+                  <StaticImage
+                    src={'../images/igQrCode.jpg'}
+                    alt={'IG QR code'}
+                    height={160}
+                  />
+                  <h3 className="pb-4">IG 粉絲專頁QR Code</h3>
+                </div>
+              </div>
+            </div>
+            <div>
+              <h1 className="pb-4 pt-4 md:pt-0">聯絡方式</h1>
+              <p>地址：雲林縣虎尾鎮新吉里155號</p>
+              <p>TEL：0912345678</p>
+              <p>E-MAIL：xxx@gmail.com</p>
+              <p>雲林縣民宿 102</p>
+            </div>
           </div>
         </div>
       </div>

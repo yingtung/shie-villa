@@ -1,7 +1,7 @@
 import { graphql, type PageProps } from 'gatsby';
 import React from 'react';
 import Layout from '../components/layout';
-import { getImage, IGatsbyImageData, StaticImage } from 'gatsby-plugin-image';
+import { getImage, IGatsbyImageData } from 'gatsby-plugin-image';
 import Banner from '../components/banner';
 import { Tab, TabGroup, TabList, TabPanel, TabPanels } from '@headlessui/react';
 
@@ -69,7 +69,9 @@ const AboutPage: React.FC<InformationPageProps> = ({ data }) => {
                       <li>
                         每房依預定房型人數入住，若未事先告知加入人數，本民宿有權拒絕入住，不便之處敬請見諒。
                       </li>
-                      <li>特別聲明：拒絕吸毒者，禁止室內抽煙。</li>
+                      <li>
+                        特別聲明：拒絕吸毒者，禁止室內抽煙以及攜帶檳榔，如造成民宿毀損、污漬，即沒收全部押金。
+                      </li>
                       <li>
                         廚房不開放煎炒炸的烹調，只提供電鍋、微波爐和IH爐。
                       </li>
