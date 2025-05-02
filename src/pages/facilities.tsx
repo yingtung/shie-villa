@@ -5,15 +5,6 @@ import { GatsbyImage, getImage, IGatsbyImageData } from 'gatsby-plugin-image';
 import Banner from '../components/banner';
 export const query = graphql`
   query {
-    banner: file(relativePath: { eq: "livingroom.jpg" }) {
-      childImageSharp {
-        gatsbyImageData(
-          layout: FULL_WIDTH
-          placeholder: BLURRED
-          formats: [AUTO, WEBP, AVIF]
-        )
-      }
-    }
     allSanityFacility {
       nodes {
         name
@@ -56,13 +47,12 @@ interface FacilitiesPageProps extends PageProps {
   };
 }
 const FacilitiesPage: React.FC<FacilitiesPageProps> = ({ data }) => {
-  const bannerImg = getImage(data.banner?.childImageSharp?.gatsbyImageData);
   const facilities = data.allSanityFacility.nodes;
   return (
     <Layout>
       <div className="pt-(--navbar-height) min-h-screen">
         {/* Banner Section */}
-        {bannerImg && <Banner image={bannerImg} titleText="民宿設施" />}
+        <Banner titleText="民宿設施" />
         <div className="max-w-6xl mx-auto px-6 py-16">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             {facilities.length > 0 &&

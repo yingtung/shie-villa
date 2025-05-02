@@ -1,16 +1,15 @@
-import { GatsbyImage, IGatsbyImageData } from 'gatsby-plugin-image';
+import { StaticImage } from 'gatsby-plugin-image';
 import React from 'react';
 
 interface BannerProps {
-  image: IGatsbyImageData;
   titleText: string;
 }
 
-const Banner: React.FC<BannerProps> = ({ image, titleText }) => {
+const Banner: React.FC<BannerProps> = ({ titleText }) => {
   return (
     <div className="relative h-[40vh] w-full overflow-hidden">
-      <GatsbyImage
-        image={image}
+      <StaticImage
+        src={'../images/livingroom.jpg'}
         alt="Banner image"
         className="w-full h-full"
         objectFit="cover"

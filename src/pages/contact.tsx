@@ -1,39 +1,15 @@
-import { graphql, type PageProps } from 'gatsby';
+import type { PageProps } from 'gatsby';
 import React from 'react';
 import Layout from '../components/layout';
-import { getImage, IGatsbyImageData, StaticImage } from 'gatsby-plugin-image';
+import { StaticImage } from 'gatsby-plugin-image';
 import Banner from '../components/banner';
-export const query = graphql`
-  query {
-    banner: file(relativePath: { eq: "livingroom.jpg" }) {
-      childImageSharp {
-        gatsbyImageData(
-          layout: FULL_WIDTH
-          placeholder: BLURRED
-          formats: [AUTO, WEBP, AVIF]
-        )
-      }
-    }
-  }
-`;
 
-interface ContactPageProps extends PageProps {
-  data: {
-    banner: {
-      childImageSharp: {
-        gatsbyImageData: IGatsbyImageData;
-      };
-    };
-  };
-}
-
-const ContactPage: React.FC<ContactPageProps> = ({ data }) => {
-  const bannerImg = getImage(data.banner?.childImageSharp?.gatsbyImageData);
+const ContactPage: React.FC<PageProps> = () => {
   return (
     <Layout>
       <div className="pt-(--navbar-height) min-h-screen">
         {/* Banner Section */}
-        {bannerImg && <Banner image={bannerImg} titleText="聯絡我們" />}
+        <Banner titleText="聯繫我們" />
         <div className="max-w-6xl mx-auto px-6 py-16">
           <div className="grid grid-cols-1 md:grid-cols-2">
             <div>

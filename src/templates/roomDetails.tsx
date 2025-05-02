@@ -20,24 +20,18 @@ interface RoomProps {
         }[];
       }[];
     };
-    banner: {
-      childImageSharp: {
-        gatsbyImageData: IGatsbyImageData;
-      };
-    };
   };
   pageContext: {
     slug: string;
   };
 }
 
-const RoomDetails: React.FC<RoomProps> = ({ data, pageContext }) => {
+const RoomDetails: React.FC<RoomProps> = ({ data }) => {
   const { sanityRoom } = data;
-  const bannerImg = getImage(data.banner?.childImageSharp?.gatsbyImageData);
 
   return (
     <Layout>
-      {bannerImg && <Banner image={bannerImg} titleText="房型介紹" />}
+      <Banner titleText="房型介紹" />
       <div className="max-w-5xl mx-auto px-6 py-16">
         {sanityRoom.images.length > 0 && (
           <div>
@@ -85,16 +79,6 @@ export const query = graphql`
         children {
           text
         }
-      }
-    }
-    banner: file(relativePath: { eq: "livingroom.jpg" }) {
-      childImageSharp {
-        gatsbyImageData(
-          width: 1200
-          layout: FULL_WIDTH
-          placeholder: BLURRED
-          formats: [AUTO, WEBP, AVIF]
-        )
       }
     }
   }
