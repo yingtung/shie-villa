@@ -63,7 +63,7 @@ const Carousel: React.FC<CarouselProps> = ({
   return (
     <>
       <div
-        className={`relative overflow-hidden ${hasBorder && 'border-base border-(--color-highlight)'}`}
+        className={`relative overflow-hidden ${hasBorder && 'border-base border-(--border-color-secondary)'}`}
       >
         {/* Slides */}
         <div className={`relative h-${height * 0.66} md:h-${height}`}>
