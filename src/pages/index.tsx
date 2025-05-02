@@ -118,29 +118,33 @@ const IndexPage: React.FC<PageProps> = () => {
       <div className="flex flex-col">
         <div className="p-8 md:p-16">
           <SectionTitle titleText="民宿設施" />
-          <div className="flex flex-row justify-spaces my-8">
-            <div className="p-4 flex-1">
-              <h2 className="text-center my-2">戶外泳池</h2>
+          <div className="flex flex-col md:flex-row justify-spaces my-8">
+            <div className="p-4 flex-1 flex flex-col">
+              <h2 className="text-center my-2 md:order-first order-last">
+                戶外泳池
+              </h2>
               <StaticImage
                 src="../images/pool.jpg"
                 alt="Slide 1"
-                className="x-full h-full object-cover border-base border-[#61A1AB]"
+                className="x-full h-full object-cover border-base border-[#F7DFF4]"
               />
             </div>
-            <div className="p-4 flex-1">
+            <div className="p-4 flex-1 flex flex-col">
               <StaticImage
                 src="../images/playground.jpg"
                 alt="Slide 2"
-                className="x-full h-full object-cover border-base border-[#F7DFF4]"
+                className="x-full h-full object-cover border-base border-[#61A1AB]"
               />
-              <h2 className="text-center my-2">親子遊樂空間</h2>
+              <h2 className="text-center my-2 ">親子遊樂空間</h2>
             </div>
-            <div className="p-4 flex-1">
-              <h2 className="text-center my-2">電動麻將桌</h2>
+            <div className="p-4 flex-1 flex flex-col">
+              <h2 className="text-center my-2 md:order-first order-last">
+                電動麻將桌
+              </h2>
               <StaticImage
                 src="../images/love.jpg"
                 alt="Slide 3"
-                className="x-full h-full object-cover border-base border-(--color-highlight)"
+                className="x-full h-full object-cover border-base border-[#ef6f6c]"
               />
             </div>
           </div>
