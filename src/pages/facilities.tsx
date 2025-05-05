@@ -5,7 +5,7 @@ import { GatsbyImage, getImage, IGatsbyImageData } from 'gatsby-plugin-image';
 import Banner from '../components/banner';
 export const query = graphql`
   query {
-    allSanityFacility {
+    allSanityFacility(sort: { order: ASC }) {
       nodes {
         name
         slug {

@@ -6,12 +6,14 @@
   --color-primary: #b5c16a;
   --color-secondary: #ccdee0;
   --color-highlight: #007bff;
+  --color-dangerous: var(--color-red-600);
   --text-color-primary: var(--color-green-900);
   --text-color-secondary: var(--color-green-500);
+  --text-color-dangerous: var(--color-red-700);
   --border-color: #8c9c02;
   --border-color-secondary: #56638a;
   --button-color: #61a1ab;
-  --button-hover-color: #c16ab5;
+  --button-color-secondary: #aedee0;
   --background-color: #fffaf0;
 }
 
@@ -68,7 +70,7 @@
     border-radius: 0.5rem;
     cursor: pointer;
     &:hover {
-      background-color: var(--button-hover-color);
+      background-color: var(--button-color-secondary);
     }
   }
   .birthstone-regular {

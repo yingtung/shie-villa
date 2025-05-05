@@ -51,14 +51,9 @@ const RoomDetails: React.FC<RoomProps> = ({ data }) => {
           </div>
         )}
         <h1>{sanityRoom.name}</h1>
-        {sanityRoom.description.map((d, index) => {
-          if (index === 0)
-            return (
-              <div className="py-4">
-                <p>{d.children[0].text}</p>
-              </div>
-            );
-          return <p>&#x2022; {d.children[0].text}</p>;
+        {sanityRoom.description.map((d) => {
+          const text = d.children[0].text.trim();
+          return text ? <p>&#x2022; {text}</p> : null;
         })}
       </div>
     </Layout>
