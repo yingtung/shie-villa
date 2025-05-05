@@ -42,14 +42,20 @@ const AboutPage: React.FC<AboutPageProps> = ({ data }) => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
               <div className="space-y-4 self-center">
                 <h3 className="text-2xl font-semibold text-center">
-                  與親友盡情歡聚，釋放活力時光
+                  與親友獨享整棟 Villa 的自在與歡樂！
                 </h3>
                 <p className="text-md leading-relaxed text-center ">
-                  在這裡，您可以盡情享受與親友的歡聚時光，
+                  歇Shie Villa 提供包棟服務，
                   <br />
-                  一同在寬敞的泳池中暢游，釋放活力。
+                  讓您與您的家人朋友擁有完全獨立的空間，
                   <br />
-                  在歡樂的夜晚，透過專業的卡拉 OK 設備，盡情歌唱。
+                  盡情享受不受打擾的度假時光。
+                  <br />
+                  寬敞的客廳、設備齊全的廚房、
+                  <br />
+                  舒適的臥室，以及豐富的戶外設施，
+                  <br />
+                  都將成為您們專屬的度假天堂，共創難忘的回憶。
                 </p>
               </div>
               <div className="relative h-64 rounded-lg overflow-hidden">
@@ -76,9 +82,15 @@ const AboutPage: React.FC<AboutPageProps> = ({ data }) => {
                   大手牽小手，共創歡樂回憶
                 </h3>
                 <p className="text-md leading-relaxed text-center">
-                  歇Shie Villa為親子出遊的家庭打造了專屬的親子遊樂空間，
+                  歇Shie Villa 提供多元的親子設施讓孩子們盡情放電，
                   <br />
-                  讓孩子們能夠盡情玩耍，大人也能安心享受悠閒時光。
+                  在戶外遊樂區溜滑梯、攀爬，在沙坑裡發揮創意，
+                  <br />
+                  晚上還能一起歡唱卡拉 OK、玩桌遊。
+                  <br />
+                  在這裡孩子們能盡情玩耍，
+                  <br />
+                  大人也能安心放鬆，共享溫馨的親子時光。
                 </p>
               </div>
             </div>

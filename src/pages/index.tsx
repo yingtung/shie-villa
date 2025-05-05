@@ -64,7 +64,7 @@ const IndexPage: React.FC<PageProps> = () => {
             獨棟｜別墅｜庭院｜歡唱
           </h2>
           <p className="my-8">
-            歇Shie Villa，提供可容納 20
+            歇Shie Villa，提供可容納 28
             人的整棟包棟住宿，打造全然專屬的團聚時光。在您忙碌的生活中，歇Shie
             Villa
             是讓您徹底放鬆身心、充電再出發的寧靜空間。盡情享受泳池的清涼、卡拉
@@ -81,9 +81,8 @@ const IndexPage: React.FC<PageProps> = () => {
         <div className="p-8 md:p-16 md:basis-1/2 self-center">
           <SectionTitle titleText="精選房型" />
           <p className="my-8">
-            歇Shie Villa，以20人包棟形式提供住宿空間，和一般單間房型的民宿不同，
-            這裡的空間是「整棟專屬」，讓你的旅行真正成為一次深刻的團聚。
-            我們希望帶給旅客在忙碌的城市中能夠在這「歇息」一下，放鬆身心靈且充電後獲得滿滿能量，再繼續努力生活、快樂生活。
+            我們共有六間精心設計的客房，包含兩間寬敞的四人房，以及四間溫馨的雙人房。特別的是，我們的雙人房皆設有舒適的閣樓空間，可依您的需求加床，非常適合情侶、朋友或小型家庭入住。無論您是哪種旅行組合，都能在歇
+            Villa 找到最適合您的休憩空間。
           </p>
           <div className="flex justify-center">
             <ViewMoreButton linkTo="/rooms" />
