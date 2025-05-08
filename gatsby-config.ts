@@ -4,6 +4,8 @@ const config: GatsbyConfig = {
   siteMetadata: {
     title: 'shie-villa',
     siteUrl: 'https://shievilla.com',
+    description: '雲林虎尾親子包棟民宿',
+    image: 'src/images/icon.png',
   },
   // More easily incorporate content into your pages through automatic TypeScript type generation and better GraphQL IntelliSense.
   // If you use VSCode you can also use the GraphQL plugin

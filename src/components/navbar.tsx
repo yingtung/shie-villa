@@ -6,21 +6,30 @@ import { Link } from 'gatsby';
 import { useLocation } from '@reach/router';
 
 const menuList = [
-  <Link to="/about" className="font-semibold">
-    關於我們
-  </Link>,
-  <Link to="/rooms" className="font-semibold">
-    房型介紹
-  </Link>,
-  <Link to="/facilities" className="font-semibold">
-    民宿設施
-  </Link>,
-  <Link to="/information" className="font-semibold">
-    訂房須知
-  </Link>,
-  <Link to="/contact" className="font-semibold">
-    聯繫我們
-  </Link>,
+  {
+    linkTo: '/news',
+    title: '最新消息',
+  },
+  {
+    linkTo: '/about',
+    title: '關於我們',
+  },
+  {
+    linkTo: '/rooms',
+    title: '房型介紹',
+  },
+  {
+    linkTo: '/facilities',
+    title: '民宿設施',
+  },
+  {
+    linkTo: '/information',
+    title: '訂房須知',
+  },
+  {
+    linkTo: '/contact',
+    title: '聯繫我們',
+  },
 ];
 
 const Navbar: React.FC = () => {
@@ -69,9 +78,12 @@ const Navbar: React.FC = () => {
           </button>
         </div>
         <PopoverGroup className="hidden lg:flex lg:gap-x-12 text-white text-base/6">
-          {menuList.map((item) => item)}
+          {menuList.map(({ linkTo, title }) => (
+            <Link to={linkTo}>{title}</Link>
+          ))}
         </PopoverGroup>
       </nav>
+      {/** mobile menu */}
       <Dialog
         open={mobileMenuOpen}
         onClose={setMobileMenuOpen}
@@ -96,7 +108,11 @@ const Navbar: React.FC = () => {
           <div className="mt-6 flow-root">
             <div className="-my-6 divide-y divide-gray-500/10">
               <div className="space-y-2 py-6 flex flex-col text-white text-xl/12">
-                {menuList.map((item) => item)}
+                {menuList.map(({ linkTo, title }) => (
+                  <Link to={linkTo} onClick={() => setMobileMenuOpen(false)}>
+                    {title}
+                  </Link>
+                ))}
               </div>
             </div>
           </div>

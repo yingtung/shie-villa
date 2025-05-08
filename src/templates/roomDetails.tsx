@@ -31,7 +31,7 @@ const RoomDetails: React.FC<RoomProps> = ({ data }) => {
 
   return (
     <Layout>
-      <Banner titleText="房型介紹" />
+      <Banner titleText={`房型介紹 - ${sanityRoom.name}`} />
       <div className="max-w-5xl mx-auto px-6 py-16">
         {sanityRoom.images.length > 0 && (
           <div>
@@ -61,7 +61,7 @@ const RoomDetails: React.FC<RoomProps> = ({ data }) => {
 };
 
 export const query = graphql`
-  query BlogPostBySlug($slug: String!) {
+  query RoomBySlug($slug: String!) {
     sanityRoom(slug: { current: { eq: $slug } }) {
       name
       id
