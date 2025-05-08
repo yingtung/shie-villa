@@ -1,5 +1,5 @@
 import React from 'react';
-import { graphql } from 'gatsby';
+import { graphql, Link } from 'gatsby';
 import { GatsbyImage, getImage, IGatsbyImageData } from 'gatsby-plugin-image';
 import Layout from '../components/layout';
 import Banner from '../components/banner';
@@ -35,7 +35,7 @@ const RoomDetails: React.FC<RoomProps> = ({ data }) => {
       <div className="max-w-5xl mx-auto px-6 py-16">
         {sanityRoom.images.length > 0 && (
           <div>
-            <Carousel withThumbnail hasBorder={false} height={112}>
+            <Carousel withThumbnail hasBorder={false} height={145}>
               {sanityRoom.images.map((roomImage) => {
                 const image = getImage(roomImage?.asset);
                 if (!image) return null;
@@ -43,7 +43,11 @@ const RoomDetails: React.FC<RoomProps> = ({ data }) => {
                   <GatsbyImage
                     image={image}
                     alt={sanityRoom.name}
-                    className="rounded-md x-full h-full object-cover"
+                    className="max-w-full max-h-full w-auto h-auto"
+                    imgStyle={{
+                      objectFit: 'scale-down',
+                      objectPosition: 'center',
+                    }}
                   />
                 );
               })}
@@ -55,6 +59,11 @@ const RoomDetails: React.FC<RoomProps> = ({ data }) => {
           const text = d.children[0].text.trim();
           return text ? <p>&#x2022; {text}</p> : null;
         })}
+        <div className="mt-4">
+          <Link to="/rooms">
+            <button className="py-2 px-4">返回</button>
+          </Link>
+        </div>
       </div>
     </Layout>
   );
@@ -67,7 +76,11 @@ export const query = graphql`
       id
       images {
         asset {
-          gatsbyImageData
+          gatsbyImageData(
+            width: 1000
+            placeholder: BLURRED
+            formats: [AUTO, WEBP]
+          )
         }
       }
       description {
