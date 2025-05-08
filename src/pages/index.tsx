@@ -4,6 +4,57 @@ import Layout from '../components/layout';
 import { StaticImage } from 'gatsby-plugin-image';
 import Carousel from '../components/carousel';
 import ViewMoreButton from '../components/viewMoreButton';
+import { GatsbyImage, getImage, IGatsbyImageData } from 'gatsby-plugin-image';
+import { Link } from 'gatsby';
+import formatDate from '../utils/formatDate';
+import { graphql } from 'gatsby';
+
+interface IndexPageProps extends PageProps {
+  data: {
+    allSanityNews: {
+      nodes: {
+        title: string;
+        slug: {
+          current: string;
+        };
+        publishedAt: string;
+        coverImage: {
+          asset: {
+            gatsbyImageData: IGatsbyImageData;
+            altText: string;
+          };
+        };
+        excerpt: string;
+      }[];
+    };
+  };
+}
+
+export const query = graphql`
+  query {
+    allSanityNews(sort: { publishedAt: DESC }, limit: 3) {
+      nodes {
+        id
+        title
+        slug {
+          current
+        }
+        publishedAt
+        excerpt
+        coverImage {
+          asset {
+            gatsbyImageData(
+              width: 300
+              placeholder: BLURRED
+              formats: [AUTO, WEBP]
+            )
+            altText
+          }
+        }
+      }
+    }
+  }
+`;
 
 const SectionTitle: React.FC<{ titleText: string }> = ({ titleText }) => {
   return (
@@ -13,8 +64,8 @@ const SectionTitle: React.FC<{ titleText: string }> = ({ titleText }) => {
   );
 };
 
-const scrollToAbout = () => {
-  const aboutSection = document.getElementById('about-section');
+const scrollToNews = () => {
+  const aboutSection = document.getElementById('news-section');
   const navbar = document.querySelector('nav');
   const navbarHeight = navbar ? navbar.offsetHeight : 0;
 
@@ -26,10 +77,13 @@ const scrollToAbout = () => {
   }
 };
 
-const IndexPage: React.FC<PageProps> = () => {
+const IndexPage: React.FC<IndexPageProps> = ({ data }) => {
+  const news = data.allSanityNews.nodes;
+
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'auto' });
   }, []);
+
   return (
     <Layout>
       <div className="relative w-full h-screen">
@@ -42,15 +96,57 @@ const IndexPage: React.FC<PageProps> = () => {
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center">
           <h1
             className="text-white text-5xl md:text-6xl font-bold mb-4 cursor-pointer hover:opacity-80 transition-opacity"
-            onClick={scrollToAbout}
+            onClick={scrollToNews}
           >
             歇Shie Villa
           </h1>
           <h2 className="text-white overline">雲林虎尾包棟住宿首選</h2>
         </div>
       </div>
+      {/* News section */}
+      <div
+        id="news-section"
+        className="flex flex-row justify-center bg-(--background-color) w-full"
+      >
+        <div className="p-8 md:p-16 w-full">
+          <SectionTitle titleText="最新消息" />
+          <div className="grid grid-cols-3 my-8 place-items-center">
+            {news.map((n) => {
+              const image = getImage(n.coverImage?.asset.gatsbyImageData);
+              return (
+                <Link
+                  to={`/news/${n.slug.current}`}
+                  key={n.slug.current}
+                  className="group bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:shadow-xl hover:-translate-y-1 w-72"
+                >
+                  <div className="h-48 w-full relative">
+                    {image && (
+                      <GatsbyImage
+                        alt={n.coverImage.asset.altText}
+                        image={image}
+                        className="w-full h-full object-cover"
+                        imgStyle={{ objectPosition: 'center' }}
+                      />
+                    )}
+                  </div>
+                  <div className="p-4">
+                    <h3 className="font-semibold mb-2 group-hover:text-(--color-highlight) transition-colors line-clamp-2">
+                      {n.title}
+                    </h3>
+                    <p className="text-sm mb-2">{formatDate(n.publishedAt)}</p>
+                    <p className="text-sm line-clamp-2">{n.excerpt}</p>
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
+          <div className="flex justify-center">
+            <ViewMoreButton linkTo="/news" />
+          </div>
+        </div>
+      </div>
       {/* About section */}
-      <div id="about-section" className="flex flex-col md:flex-row">
+      <div className="flex flex-col md:flex-row">
         <div className="p-8 md:p-16 md:basis-1/2">
           <StaticImage
             src="../images/test01.jpg"
