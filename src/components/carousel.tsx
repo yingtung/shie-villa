@@ -66,7 +66,9 @@ const Carousel: React.FC<CarouselProps> = ({
         className={`relative overflow-hidden ${hasBorder && 'border-base border-(--border-color-secondary)'}`}
       >
         {/* Slides */}
-        <div className={`relative h-${height * 0.66} md:h-${height}`}>
+        <div
+          className={`relative h-${Math.ceil(height * 0.48)} md:h-${height}`}
+        >
           {children.map((child, index) => (
             <Transition
               key={index}
@@ -78,7 +80,17 @@ const Carousel: React.FC<CarouselProps> = ({
               leaveFrom="translate-x-0"
               leaveTo={`${direction === 'right' ? '-translate-x-full' : 'translate-x-full'}`}
             >
-              <div className="w-full h-full">{child}</div>
+              <div
+                className={
+                  'w-full h-full flex items-center justify-center bg-(--background-color) rounded-md'
+                }
+              >
+                <div
+                  className={'w-full h-full flex items-center justify-center'}
+                >
+                  {child}
+                </div>
+              </div>
             </Transition>
           ))}
         </div>
@@ -150,7 +162,12 @@ const Carousel: React.FC<CarouselProps> = ({
         {children.length > 0 &&
           withThumbnail &&
           children.map((child, index) => (
-            <div onClick={() => goToSlide(index)}>{child}</div>
+            <div
+              className="h-16 md:h-22 bg-white rounded-md flex justify-items-center overflow-hidden transition-transform duration-300 hover:-translate-y-1 cursor-pointer"
+              onClick={() => goToSlide(index)}
+            >
+              {child}
+            </div>
           ))}
       </div>
     </>

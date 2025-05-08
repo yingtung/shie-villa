@@ -44,7 +44,7 @@ const NewsDetails: React.FC<NewProps> = ({ data }) => {
               <GatsbyImage
                 image={image}
                 alt={sanityNews.coverImage.asset.altText}
-                className="rounded-lg x-full h-full object-cover"
+                className="rounded-lg x-full h-full"
                 imgStyle={{ objectPosition: 'center', objectFit: 'scale-down' }}
               />
             </div>

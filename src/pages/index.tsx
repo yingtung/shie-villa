@@ -104,13 +104,10 @@ const IndexPage: React.FC<IndexPageProps> = ({ data }) => {
         </div>
       </div>
       {/* News section */}
-      <div
-        id="news-section"
-        className="flex flex-row justify-center bg-(--background-color) w-full"
-      >
+      <div id="news-section" className="flex flex-row justify-center w-full">
         <div className="p-8 md:p-16 w-full">
           <SectionTitle titleText="最新消息" />
-          <div className="grid grid-cols-3 my-8 place-items-center">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 my-8 place-items-center">
             {news.map((n) => {
               const image = getImage(n.coverImage?.asset.gatsbyImageData);
               return (
@@ -146,7 +143,7 @@ const IndexPage: React.FC<IndexPageProps> = ({ data }) => {
         </div>
       </div>
       {/* About section */}
-      <div className="flex flex-col md:flex-row">
+      <div className="flex flex-col md:flex-row  bg-(--background-color)">
         <div className="p-8 md:p-16 md:basis-1/2">
           <StaticImage
             src="../images/test01.jpg"
@@ -173,11 +170,11 @@ const IndexPage: React.FC<IndexPageProps> = ({ data }) => {
         </div>
       </div>
       {/* Rooms section */}
-      <div className="flex flex-col md:flex-row bg-(--background-color)">
+      <div className="flex flex-col md:flex-row ">
         <div className="p-8 md:p-16 md:basis-1/2 self-center">
           <SectionTitle titleText="精選房型" />
           <p className="my-8">
-            我們共有六間精心設計的客房，包含兩間寬敞的四人房，以及四間溫馨的雙人房。特別的是，我們的雙人房皆設有舒適的閣樓空間，可依您的需求加床，非常適合情侶、朋友或小型家庭入住。無論您是哪種旅行組合，都能在歇
+            我們共有六間精心設計的客房，包含四間寬敞的四人房，以及兩間溫馨的雙人房。特別的是，我們的雙人房皆設有舒適的閣樓空間，可依您的需求加床，非常適合情侶、朋友或小型家庭入住。無論您是哪種旅行組合，都能在歇
             Villa 找到最適合您的休憩空間。
           </p>
           <div className="flex justify-center">
@@ -210,7 +207,7 @@ const IndexPage: React.FC<IndexPageProps> = ({ data }) => {
         </div>
       </div>
       {/* Facilities section */}
-      <div className="flex flex-col">
+      <div className="flex flex-col bg-(--background-color)">
         <div className="p-8 md:p-16">
           <SectionTitle titleText="民宿設施" />
           <div className="flex flex-col md:flex-row justify-spaces my-8">
@@ -248,7 +245,7 @@ const IndexPage: React.FC<IndexPageProps> = ({ data }) => {
           </div>
         </div>
         {/* Location section */}
-        <div className="flex flex-col bg-(--background-color)">
+        <div className="flex flex-col">
           <div className="p-8 md:p-16">
             <SectionTitle titleText="交通位置" />
             <div className="flex justify-center my-8">
