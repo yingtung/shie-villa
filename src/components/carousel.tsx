@@ -149,7 +149,7 @@ const Carousel: React.FC<CarouselProps> = ({
                 onClick={() => goToSlide(index)}
                 className={`rounded-full w-3 h-3 focus:outline-none ${
                   currentIndex === index
-                    ? 'bg-(--color-highlight)'
+                    ? 'bg-(--border-color-secondary)'
                     : 'bg-gray-300'
                 }`}
               />

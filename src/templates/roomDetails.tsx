@@ -31,9 +31,9 @@ const RoomDetails: React.FC<RoomProps> = ({ data }) => {
 
   return (
     <Layout>
-      <div className="pt-(--navbar-height) min-h-screen bg-gray-50">
+      <div className="pt-(--navbar-height) min-h-screen">
         <Banner titleText={'房型介紹'} />
-        <div className="max-w-5xl mx-auto px-6 py-16">
+        <div className="max-w-4xl mx-auto px-6 py-16">
           {sanityRoom.images.length > 0 && (
             <div>
               <Carousel withThumbnail hasBorder={false} height={145}>
@@ -41,15 +41,17 @@ const RoomDetails: React.FC<RoomProps> = ({ data }) => {
                   const image = getImage(roomImage?.asset);
                   if (!image) return null;
                   return (
-                    <GatsbyImage
-                      image={image}
-                      alt={sanityRoom.name}
-                      className="max-w-full max-h-full w-auto h-auto"
-                      imgStyle={{
-                        objectFit: 'scale-down',
-                        objectPosition: 'center',
-                      }}
-                    />
+                    <div className="w-full aspect-[4/3]">
+                      <GatsbyImage
+                        image={image}
+                        alt={sanityRoom.name}
+                        className="w-full h-full"
+                        imgStyle={{
+                          objectFit: 'scale-down',
+                          objectPosition: 'center',
+                        }}
+                      />
+                    </div>
                   );
                 })}
               </Carousel>
