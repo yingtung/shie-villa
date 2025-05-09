@@ -27,11 +27,72 @@ interface IndexPageProps extends PageProps {
         excerpt: string;
       }[];
     };
+    allSanityRoom: {
+      nodes: {
+        slug: {
+          current: string;
+        };
+        images: {
+          asset: {
+            gatsbyImageData: IGatsbyImageData;
+          };
+        }[];
+      }[];
+    };
+    allSanityFacility: {
+      nodes: {
+        name: string;
+        slug: {
+          current: string;
+        };
+        image: {
+          asset: {
+            gatsbyImageData: IGatsbyImageData;
+          };
+        };
+      }[];
+    };
   };
 }
 
 export const query = graphql`
   query {
+    allSanityFacility(filter: { order: { in: [1, 2, 9] } }) {
+      nodes {
+        name
+        slug {
+          current
+        }
+        image {
+          asset {
+            gatsbyImageData(
+              width: 400
+              placeholder: BLURRED
+              formats: [AUTO, WEBP]
+              aspectRatio: 1.4
+            )
+            altText
+          }
+        }
+      }
+    }
+    allSanityRoom(sort: { slug: { current: ASC } }) {
+      nodes {
+        slug {
+          current
+        }
+        images {
+          asset {
+            gatsbyImageData(
+              width: 300
+              placeholder: BLURRED
+              formats: [AUTO, WEBP]
+            )
+            altText
+          }
+        }
+      }
+    }
     allSanityNews(sort: { publishedAt: DESC }, limit: 3) {
       nodes {
         id
@@ -44,7 +105,7 @@ export const query = graphql`
         coverImage {
           asset {
             gatsbyImageData(
-              width: 300
+              width: 800
               placeholder: BLURRED
               formats: [AUTO, WEBP]
             )
@@ -79,6 +140,8 @@ const scrollToNews = () => {
 
 const IndexPage: React.FC<IndexPageProps> = ({ data }) => {
   const news = data.allSanityNews.nodes;
+  const rooms = data.allSanityRoom.nodes;
+  const facilities = data.allSanityFacility.nodes;
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'auto' });
@@ -146,8 +209,8 @@ const IndexPage: React.FC<IndexPageProps> = ({ data }) => {
       <div className="flex flex-col md:flex-row  bg-(--background-color)">
         <div className="p-8 md:p-16 md:basis-1/2">
           <StaticImage
-            src="../images/test01.jpg"
-            alt="Demo image"
+            src="../images/dinningTable.jpg"
+            alt="歇Shie Villa 民宿"
             className="border-(--border-color) border-base"
           />
         </div>
@@ -170,7 +233,7 @@ const IndexPage: React.FC<IndexPageProps> = ({ data }) => {
         </div>
       </div>
       {/* Rooms section */}
-      <div className="flex flex-col md:flex-row ">
+      <div className="flex flex-col md:flex-row min-h-120 items-center">
         <div className="p-8 md:p-16 md:basis-1/2 self-center">
           <SectionTitle titleText="精選房型" />
           <p className="my-8">
@@ -182,27 +245,20 @@ const IndexPage: React.FC<IndexPageProps> = ({ data }) => {
           </div>
         </div>
         <div className="p-8 md:p-16 md:basis-1/2 md:order-last order-first">
-          <Carousel autoplay autoplayInterval={5000} height={96}>
-            <StaticImage
-              src="../images/demo01.jpg"
-              alt="Slide 1"
-              className="w-full h-full object-cover"
-            />
-            <StaticImage
-              src="../images/demo02.jpg"
-              alt="Slide 2"
-              className="w-full h-full object-cover"
-            />
-            <StaticImage
-              src="../images/demo03.jpg"
-              alt="Slide 3"
-              className="w-full h-full object-cover"
-            />
-            <StaticImage
-              src="../images/demo04.jpg"
-              alt="Slide 4"
-              className="w-full h-full object-cover"
-            />
+          <Carousel autoplay autoplayInterval={5000} height={95}>
+            {rooms.map((room) => {
+              const roomImg = getImage(room.images[0]?.asset.gatsbyImageData);
+              return (
+                roomImg && (
+                  <GatsbyImage
+                    image={roomImg}
+                    alt={room.slug.current}
+                    className="w-full h-full md:h-95 object-cover"
+                    imgStyle={{ objectPosition: 'center' }}
+                  />
+                )
+              );
+            })}
           </Carousel>
         </div>
       </div>
@@ -211,7 +267,29 @@ const IndexPage: React.FC<IndexPageProps> = ({ data }) => {
         <div className="p-8 md:p-16">
           <SectionTitle titleText="民宿設施" />
           <div className="flex flex-col md:flex-row justify-spaces my-8">
-            <div className="p-4 flex-1 flex flex-col">
+            {facilities.map((facility, index) => {
+              const image = getImage(facility.image?.asset.gatsbyImageData);
+              const borderColors = ['#8a2be2', '#ef6f6c', '#F7DFF4'];
+
+              return (
+                <div className="p-4 flex-1 flex flex-col">
+                  <h2
+                    className={`text-center my-2 ${index % 2 === 0 ? 'md:order-first order-last' : 'order-last'}`}
+                  >
+                    {facility.name}
+                  </h2>
+                  {image && (
+                    <GatsbyImage
+                      image={image}
+                      alt={facility.slug.current}
+                      imgStyle={{ objectPosition: 'center' }}
+                      className={`x-full h-full object-cover border-base border-[${borderColors[index]}]`}
+                    />
+                  )}
+                </div>
+              );
+            })}
+            {/* <div className="p-4 flex-1 flex flex-col">
               <h2 className="text-center my-2 md:order-first order-last">
                 戶外泳池
               </h2>
@@ -225,7 +303,7 @@ const IndexPage: React.FC<IndexPageProps> = ({ data }) => {
               <StaticImage
                 src="../images/playground.jpg"
                 alt="Slide 2"
-                className="x-full h-full object-cover border-base border-[#61A1AB]"
+                className="x-full h-full object-cover border-base border-"
               />
               <h2 className="text-center my-2 ">親子遊樂空間</h2>
             </div>
@@ -236,9 +314,9 @@ const IndexPage: React.FC<IndexPageProps> = ({ data }) => {
               <StaticImage
                 src="../images/love.jpg"
                 alt="Slide 3"
-                className="x-full h-full object-cover border-base border-[#ef6f6c]"
+                className="x-full h-full object-cover border-base border-"
               />
-            </div>
+            </div> */}
           </div>
           <div className="flex justify-center py-8">
             <ViewMoreButton linkTo="/facilities" />

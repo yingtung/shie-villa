@@ -31,38 +31,40 @@ const RoomDetails: React.FC<RoomProps> = ({ data }) => {
 
   return (
     <Layout>
-      <Banner titleText={`房型介紹 - ${sanityRoom.name}`} />
-      <div className="max-w-5xl mx-auto px-6 py-16">
-        {sanityRoom.images.length > 0 && (
-          <div>
-            <Carousel withThumbnail hasBorder={false} height={145}>
-              {sanityRoom.images.map((roomImage) => {
-                const image = getImage(roomImage?.asset);
-                if (!image) return null;
-                return (
-                  <GatsbyImage
-                    image={image}
-                    alt={sanityRoom.name}
-                    className="max-w-full max-h-full w-auto h-auto"
-                    imgStyle={{
-                      objectFit: 'scale-down',
-                      objectPosition: 'center',
-                    }}
-                  />
-                );
-              })}
-            </Carousel>
+      <div className="pt-(--navbar-height) min-h-screen bg-gray-50">
+        <Banner titleText={'房型介紹'} />
+        <div className="max-w-5xl mx-auto px-6 py-16">
+          {sanityRoom.images.length > 0 && (
+            <div>
+              <Carousel withThumbnail hasBorder={false} height={145}>
+                {sanityRoom.images.map((roomImage) => {
+                  const image = getImage(roomImage?.asset);
+                  if (!image) return null;
+                  return (
+                    <GatsbyImage
+                      image={image}
+                      alt={sanityRoom.name}
+                      className="max-w-full max-h-full w-auto h-auto"
+                      imgStyle={{
+                        objectFit: 'scale-down',
+                        objectPosition: 'center',
+                      }}
+                    />
+                  );
+                })}
+              </Carousel>
+            </div>
+          )}
+          <h1>{sanityRoom.name}</h1>
+          {sanityRoom.description.map((d) => {
+            const text = d.children[0].text.trim();
+            return text ? <p>&#x2022; {text}</p> : null;
+          })}
+          <div className="mt-4">
+            <Link to="/rooms">
+              <button className="py-2 px-4">返回</button>
+            </Link>
           </div>
-        )}
-        <h1>{sanityRoom.name}</h1>
-        {sanityRoom.description.map((d) => {
-          const text = d.children[0].text.trim();
-          return text ? <p>&#x2022; {text}</p> : null;
-        })}
-        <div className="mt-4">
-          <Link to="/rooms">
-            <button className="py-2 px-4">返回</button>
-          </Link>
         </div>
       </div>
     </Layout>
@@ -77,7 +79,7 @@ export const query = graphql`
       images {
         asset {
           gatsbyImageData(
-            width: 1000
+            width: 900
             placeholder: BLURRED
             formats: [AUTO, WEBP]
           )

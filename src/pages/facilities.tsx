@@ -13,7 +13,12 @@ export const query = graphql`
         }
         image {
           asset {
-            gatsbyImageData
+            gatsbyImageData(
+              width: 400
+              placeholder: BLURRED
+              formats: [AUTO, WEBP]
+            )
+            altText
           }
         }
         description
@@ -63,11 +68,15 @@ const FacilitiesPage: React.FC<FacilitiesPageProps> = ({ data }) => {
                 if (!facilityImg) return null;
                 return (
                   <div>
-                    <div className="h-48 py-2">
+                    <div className="h-60 py-2">
                       <GatsbyImage
                         image={facilityImg}
                         alt={facility.name}
                         className="w-full h-full rounded-lg"
+                        imgStyle={{
+                          objectPosition: 'center',
+                          objectFit: 'cover',
+                        }}
                       />
                     </div>
                     <div>

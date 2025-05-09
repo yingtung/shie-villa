@@ -9,7 +9,7 @@ const Banner: React.FC<BannerProps> = ({ titleText }) => {
   return (
     <div className="relative h-[40vh] w-full overflow-hidden">
       <StaticImage
-        src={'../images/livingroom.jpg'}
+        src={'../images/banner.jpg'}
         alt="Banner image"
         className="w-full h-full"
         objectFit="cover"

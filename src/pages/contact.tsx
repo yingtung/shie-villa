@@ -20,6 +20,7 @@ const ContactPage: React.FC<PageProps> = () => {
                     src={'../images/fbQrCode.png'}
                     alt={'FB QR code'}
                     height={200}
+                    placeholder="blurred"
                   />
                   <h3 className="pb-4">FB 粉絲專頁QR Code</h3>
                 </div>
@@ -28,6 +29,7 @@ const ContactPage: React.FC<PageProps> = () => {
                     src={'../images/igQrCode.jpg'}
                     alt={'IG QR code'}
                     height={200}
+                    placeholder="blurred"
                   />
                   <h3 className="pb-4">IG 粉絲專頁QR Code</h3>
                 </div>
@@ -45,6 +47,7 @@ const ContactPage: React.FC<PageProps> = () => {
                   src={'../images/lisence.jpg'}
                   alt={'lisence'}
                   className="x-full h-full object-cover rounded-md"
+                  placeholder="blurred"
                 />
               </div>
             </div>

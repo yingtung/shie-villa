@@ -158,18 +158,19 @@ const Carousel: React.FC<CarouselProps> = ({
         )}
       </div>
       {/* Thumbnails */}
-      <div className="grid grid-cols-8 gap-2 py-8">
-        {children.length > 0 &&
-          withThumbnail &&
-          children.map((child, index) => (
-            <div
-              className="h-16 md:h-22 bg-white rounded-md flex justify-items-center overflow-hidden transition-transform duration-300 hover:-translate-y-1 cursor-pointer"
-              onClick={() => goToSlide(index)}
-            >
-              {child}
-            </div>
-          ))}
-      </div>
+      {withThumbnail && (
+        <div className="grid grid-cols-8 gap-2 py-8">
+          {children.length > 0 &&
+            children.map((child, index) => (
+              <div
+                className="h-16 md:h-22 bg-white rounded-md flex justify-items-center overflow-hidden transition-transform duration-300 hover:-translate-y-1 cursor-pointer"
+                onClick={() => goToSlide(index)}
+              >
+                {child}
+              </div>
+            ))}
+        </div>
+      )}
     </>
   );
 };
