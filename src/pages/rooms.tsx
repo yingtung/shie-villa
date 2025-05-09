@@ -1,8 +1,9 @@
-import { graphql, Link, type PageProps } from 'gatsby';
+import { graphql, HeadFC, Link, type PageProps } from 'gatsby';
 import React from 'react';
 import Layout from '../components/layout';
 import Banner from '../components/banner';
 import { GatsbyImage, getImage, IGatsbyImageData } from 'gatsby-plugin-image';
+import { SEO } from '../components/seo';
 export const query = graphql`
   query {
     allSanityRoom(sort: { slug: { current: ASC } }) {
@@ -49,7 +50,7 @@ interface RooomsPageProps extends PageProps {
     };
   };
 }
-
+const PAGE_TITLE = '房型介紹';
 const RoomsPage: React.FC<RooomsPageProps> = ({ data }) => {
   const rooms = data.allSanityRoom.nodes;
   return (
@@ -88,3 +89,4 @@ const RoomsPage: React.FC<RooomsPageProps> = ({ data }) => {
 };
 
 export default RoomsPage;
+export const Head: HeadFC = () => <SEO title={PAGE_TITLE} />;

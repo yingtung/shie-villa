@@ -17,13 +17,6 @@
   --background-color: #fffaf0;
 }
 
-@font-face {
-  font-family: 'Faker Pearl';
-  src:
-    local('Faker Pearl'),
-    url('../static/fonts/FakePearl-Regular.woff') format('woff');
-}
-
 @layer components {
   p {
     font-size: var(--text-base);
@@ -77,9 +70,6 @@
     font-family: 'Birthstone', cursive;
     font-weight: 400;
     font-style: normal;
-  }
-  .faker-pearl-regular {
-    font-family: 'Faker Pearl';
   }
   .divider {
     border-color: var(--color-secondary);

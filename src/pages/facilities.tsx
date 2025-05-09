@@ -1,8 +1,9 @@
-import { graphql, type PageProps } from 'gatsby';
+import { graphql, HeadFC, type PageProps } from 'gatsby';
 import React from 'react';
 import Layout from '../components/layout';
 import { GatsbyImage, getImage, IGatsbyImageData } from 'gatsby-plugin-image';
 import Banner from '../components/banner';
+import { SEO } from '../components/seo';
 export const query = graphql`
   query {
     allSanityFacility(sort: { order: ASC }) {
@@ -51,13 +52,14 @@ interface FacilitiesPageProps extends PageProps {
     };
   };
 }
+const PAGE_TITLE = '民宿設施';
 const FacilitiesPage: React.FC<FacilitiesPageProps> = ({ data }) => {
   const facilities = data.allSanityFacility.nodes;
   return (
     <Layout>
       <div className="pt-(--navbar-height) min-h-screen">
         {/* Banner Section */}
-        <Banner titleText="民宿設施" />
+        <Banner titleText={PAGE_TITLE} />
         <div className="max-w-6xl mx-auto px-6 py-16">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             {facilities.length > 0 &&
@@ -94,3 +96,4 @@ const FacilitiesPage: React.FC<FacilitiesPageProps> = ({ data }) => {
 };
 
 export default FacilitiesPage;
+export const Head: HeadFC = () => <SEO title={PAGE_TITLE} />;

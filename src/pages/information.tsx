@@ -1,8 +1,9 @@
-import type { PageProps } from 'gatsby';
+import type { HeadFC, PageProps } from 'gatsby';
 import React from 'react';
 import Layout from '../components/layout';
 import Banner from '../components/banner';
 import { Tab, TabGroup, TabList, TabPanel, TabPanels } from '@headlessui/react';
+import { SEO } from '../components/seo';
 
 const tabMenu = [
   { key: 'tab1', title: '入/退住須知' },
@@ -10,13 +11,14 @@ const tabMenu = [
   { key: 'tab3', title: '匯款資訊' },
   { key: 'tab4', title: '取消或延期' },
 ];
+const PAGE_TITLE = '訂房須知';
 const InformationPage: React.FC<PageProps> = () => {
   return (
     <Layout>
       <div>
         <div className="pt-(--navbar-height) min-h-screen">
           {/* Banner Section */}
-          <Banner titleText="訂房須知" />
+          <Banner titleText={PAGE_TITLE} />
           <div className="max-w-6xl mx-auto px-6 py-16">
             <TabGroup>
               <TabList className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 justify-center">
@@ -264,3 +266,4 @@ const InformationPage: React.FC<PageProps> = () => {
 };
 
 export default InformationPage;
+export const Head: HeadFC = () => <SEO title={PAGE_TITLE} />;
