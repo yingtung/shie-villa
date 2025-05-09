@@ -8,6 +8,7 @@ import { GatsbyImage, getImage, IGatsbyImageData } from 'gatsby-plugin-image';
 import { Link } from 'gatsby';
 import formatDate from '../utils/formatDate';
 import { graphql } from 'gatsby';
+import { SEO } from '../components/seo';
 
 interface IndexPageProps extends PageProps {
   data: {
@@ -170,7 +171,7 @@ const IndexPage: React.FC<IndexPageProps> = ({ data }) => {
       <div id="news-section" className="flex flex-row justify-center w-full">
         <div className="p-8 md:p-16 w-full">
           <SectionTitle titleText="最新消息" />
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 my-8 place-items-center">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 my-8 place-items-center">
             {news.map((n) => {
               const image = getImage(n.coverImage?.asset.gatsbyImageData);
               return (
@@ -317,6 +318,4 @@ const IndexPage: React.FC<IndexPageProps> = ({ data }) => {
 
 export default IndexPage;
 
-export const Head: HeadFC = () => (
-  <title>歇Shie Villa民宿 - 雲林虎尾包棟住宿首選</title>
-);
+export const Head: HeadFC = () => <SEO />;

@@ -1,15 +1,17 @@
-import type { PageProps } from 'gatsby';
+import type { HeadFC, PageProps } from 'gatsby';
 import React from 'react';
 import Layout from '../components/layout';
 import { StaticImage } from 'gatsby-plugin-image';
 import Banner from '../components/banner';
+import { SEO } from '../components/seo';
 
+const PAGE_TITLE = '聯繫我們';
 const ContactPage: React.FC<PageProps> = () => {
   return (
     <Layout>
       <div className="pt-(--navbar-height) min-h-screen">
         {/* Banner Section */}
-        <Banner titleText="聯繫我們" />
+        <Banner titleText={PAGE_TITLE} />
         <div className="max-w-6xl mx-auto px-6 py-16">
           <div className="grid grid-cols-1 md:grid-cols-2">
             <div>
@@ -59,3 +61,5 @@ const ContactPage: React.FC<PageProps> = () => {
 };
 
 export default ContactPage;
+
+export const Head: HeadFC = () => <SEO title={PAGE_TITLE} />;

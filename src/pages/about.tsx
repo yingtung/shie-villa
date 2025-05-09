@@ -1,8 +1,9 @@
-import type { PageProps } from 'gatsby';
+import type { HeadFC, PageProps } from 'gatsby';
 import React from 'react';
 import Layout from '../components/layout';
 import { IGatsbyImageData, StaticImage } from 'gatsby-plugin-image';
 import Banner from '../components/banner';
+import { SEO } from '../components/seo';
 
 interface AboutPageProps extends PageProps {
   data: {
@@ -13,13 +14,14 @@ interface AboutPageProps extends PageProps {
     };
   };
 }
+const PAGE_TITLE = '關於我們';
 
 const AboutPage: React.FC<AboutPageProps> = ({ data }) => {
   return (
     <Layout>
       <div className="pt-(--navbar-height) min-h-screen">
         {/* Banner Section */}
-        <Banner titleText="關於我們" />
+        <Banner titleText={PAGE_TITLE} />
         {/* Content Section */}
         <div className="max-w-6xl mx-auto px-6 py-16">
           <div className="space-y-10">
@@ -105,3 +107,4 @@ const AboutPage: React.FC<AboutPageProps> = ({ data }) => {
 };
 
 export default AboutPage;
+export const Head: HeadFC = () => <SEO title={PAGE_TITLE} />;

@@ -1,9 +1,10 @@
-import { graphql, type PageProps, Link } from 'gatsby';
+import { graphql, type PageProps, Link, HeadFC } from 'gatsby';
 import React from 'react';
 import Layout from '../components/layout';
 import { GatsbyImage, getImage, IGatsbyImageData } from 'gatsby-plugin-image';
 import Banner from '../components/banner';
 import formatDate from '../utils/formatDate';
+import { SEO } from '../components/seo';
 
 interface NewsPageProps extends PageProps {
   data: {
@@ -25,7 +26,7 @@ interface NewsPageProps extends PageProps {
     };
   };
 }
-
+const PAGE_TITLE = '最新消息';
 export const query = graphql`
   query {
     allSanityNews(sort: { publishedAt: DESC }) {
@@ -58,7 +59,7 @@ const NewsPage: React.FC<NewsPageProps> = ({ data }) => {
     <Layout>
       <div className="pt-(--navbar-height) min-h-screen ">
         {/* Banner Section */}
-        <Banner titleText="最新消息" />
+        <Banner titleText={PAGE_TITLE} />
         {/* Content Section */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -73,7 +74,7 @@ const NewsPage: React.FC<NewsPageProps> = ({ data }) => {
                   <div className="h-60 w-full relative">
                     {image && (
                       <GatsbyImage
-                        alt={n.coverImage.asset.altText}
+                        alt={n.coverImage.asset.altText || n.title}
                         image={image}
                         className="w-full h-full object-cover"
                         imgStyle={{ objectPosition: 'center' }}
@@ -98,3 +99,4 @@ const NewsPage: React.FC<NewsPageProps> = ({ data }) => {
 };
 
 export default NewsPage;
+export const Head: HeadFC = () => <SEO title={PAGE_TITLE} />;
