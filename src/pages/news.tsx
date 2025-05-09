@@ -56,7 +56,7 @@ const NewsPage: React.FC<NewsPageProps> = ({ data }) => {
 
   return (
     <Layout>
-      <div className="pt-(--navbar-height) min-h-screen bg-gray-50">
+      <div className="pt-(--navbar-height) min-h-screen ">
         {/* Banner Section */}
         <Banner titleText="最新消息" />
         {/* Content Section */}

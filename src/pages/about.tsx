@@ -58,23 +58,26 @@ const AboutPage: React.FC<AboutPageProps> = ({ data }) => {
                   都將成為您們專屬的度假天堂，共創難忘的回憶。
                 </p>
               </div>
-              <div className="relative h-64 rounded-lg overflow-hidden">
+              <div className="relative h-76 rounded-lg overflow-hidden">
                 <StaticImage
                   className="w-full h-full object-cover"
-                  src="../images/pool.jpg"
-                  alt="swimming pool"
+                  src="../images/livingroom.jpg"
+                  alt="包棟民宿"
                   placeholder="blurred"
                 />
               </div>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-              <div className="relative h-64 rounded-lg overflow-hidden order-2 md:order-1">
+              <div className="relative h-76 rounded-lg overflow-hidden order-2 md:order-1">
                 <StaticImage
-                  className="w-full h-full object-cover"
-                  src="../images/slide.jpg"
-                  alt="海港風景"
+                  className="w-full h-full rounded-lg"
+                  src="../images/childFriendly.jpg"
+                  alt="親子友善"
                   placeholder="blurred"
+                  imgStyle={{
+                    objectPosition: 'bottom',
+                  }}
                 />
               </div>
               <div className="space-y-6 order-1 md:order-2 self-center">

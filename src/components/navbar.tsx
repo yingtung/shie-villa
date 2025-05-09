@@ -78,8 +78,10 @@ const Navbar: React.FC = () => {
           </button>
         </div>
         <PopoverGroup className="hidden lg:flex lg:gap-x-12 text-white text-base/6">
-          {menuList.map(({ linkTo, title }) => (
-            <Link to={linkTo}>{title}</Link>
+          {menuList.map(({ linkTo, title }, index) => (
+            <Link key={index} to={linkTo}>
+              {title}
+            </Link>
           ))}
         </PopoverGroup>
       </nav>

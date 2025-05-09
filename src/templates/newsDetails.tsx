@@ -36,33 +36,38 @@ const NewsDetails: React.FC<NewProps> = ({ data }) => {
 
   return (
     <Layout>
-      <Banner titleText="最新消息" />
-      <div className="max-w-5xl mx-auto px-6 py-16">
-        <article className="prose prose-lg max-w-none">
-          {image && (
-            <div className="mb-8 w-full relative h-100">
-              <GatsbyImage
-                image={image}
-                alt={sanityNews.coverImage.asset.altText}
-                className="rounded-lg x-full h-full"
-                imgStyle={{ objectPosition: 'center', objectFit: 'scale-down' }}
+      <div className="pt-(--navbar-height) min-h-screen ">
+        <Banner titleText="最新消息" />
+        <div className="max-w-5xl mx-auto px-6 py-16">
+          <article className="prose prose-lg max-w-none">
+            {image && (
+              <div className="mb-8 w-full relative h-100">
+                <GatsbyImage
+                  image={image}
+                  alt={sanityNews.coverImage.asset.altText}
+                  className="rounded-lg x-full h-full"
+                  imgStyle={{
+                    objectPosition: 'center',
+                    objectFit: 'scale-down',
+                  }}
+                />
+              </div>
+            )}
+            <h1 className="text-3xl font-bold mb-2">{sanityNews.title}</h1>
+            <div className="text-gray-500 mb-4">
+              {formatDate(sanityNews.publishedAt)}
+            </div>
+            <div className="prose prose-lg">
+              <PortableText
+                value={sanityNews._rawContent}
+                components={components}
               />
             </div>
-          )}
-          <h1 className="text-3xl font-bold mb-2">{sanityNews.title}</h1>
-          <div className="text-gray-500 mb-4">
-            {formatDate(sanityNews.publishedAt)}
-          </div>
-          <div className="prose prose-lg">
-            <PortableText
-              value={sanityNews._rawContent}
-              components={components}
-            />
-          </div>
-        </article>
-        <Link to="/news">
-          <button className="py-2 px-4 text-lg">返回消息列表</button>
-        </Link>
+          </article>
+          <Link to="/news">
+            <button className="py-2 px-4 text-lg">返回消息列表</button>
+          </Link>
+        </div>
       </div>
     </Layout>
   );
