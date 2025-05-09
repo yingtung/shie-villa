@@ -84,7 +84,7 @@ export const query = graphql`
         images {
           asset {
             gatsbyImageData(
-              width: 300
+              width: 600
               placeholder: BLURRED
               formats: [AUTO, WEBP]
             )
@@ -105,7 +105,7 @@ export const query = graphql`
         coverImage {
           asset {
             gatsbyImageData(
-              width: 800
+              width: 300
               placeholder: BLURRED
               formats: [AUTO, WEBP]
             )
@@ -269,7 +269,6 @@ const IndexPage: React.FC<IndexPageProps> = ({ data }) => {
           <div className="flex flex-col md:flex-row justify-spaces my-8">
             {facilities.map((facility, index) => {
               const image = getImage(facility.image?.asset.gatsbyImageData);
-              const borderColors = ['#8a2be2', '#ef6f6c', '#F7DFF4'];
 
               return (
                 <div className="p-4 flex-1 flex flex-col">
@@ -283,58 +282,32 @@ const IndexPage: React.FC<IndexPageProps> = ({ data }) => {
                       image={image}
                       alt={facility.slug.current}
                       imgStyle={{ objectPosition: 'center' }}
-                      className={`x-full h-full object-cover border-base border-[${borderColors[index]}]`}
+                      className={
+                        'x-full h-full object-cover border-base border-[#ef6f6c]'
+                      }
                     />
                   )}
                 </div>
               );
             })}
-            {/* <div className="p-4 flex-1 flex flex-col">
-              <h2 className="text-center my-2 md:order-first order-last">
-                戶外泳池
-              </h2>
-              <StaticImage
-                src="../images/pool.jpg"
-                alt="Slide 1"
-                className="x-full h-full object-cover border-base border-[#F7DFF4]"
-              />
-            </div>
-            <div className="p-4 flex-1 flex flex-col">
-              <StaticImage
-                src="../images/playground.jpg"
-                alt="Slide 2"
-                className="x-full h-full object-cover border-base border-"
-              />
-              <h2 className="text-center my-2 ">親子遊樂空間</h2>
-            </div>
-            <div className="p-4 flex-1 flex flex-col">
-              <h2 className="text-center my-2 md:order-first order-last">
-                電動麻將桌
-              </h2>
-              <StaticImage
-                src="../images/love.jpg"
-                alt="Slide 3"
-                className="x-full h-full object-cover border-base border-"
-              />
-            </div> */}
           </div>
           <div className="flex justify-center py-8">
             <ViewMoreButton linkTo="/facilities" />
           </div>
         </div>
-        {/* Location section */}
-        <div className="flex flex-col">
-          <div className="p-8 md:p-16">
-            <SectionTitle titleText="交通位置" />
-            <div className="flex justify-center my-8">
-              <iframe
-                title="location"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3653.0652872841893!2d120.41951677556327!3d23.70936247869836!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346eb19a93072973%3A0x4fea993fcaeb3e9e!2z5q2HU2hpZSBWaUxMQS3pm7LmnpfljIXmo5_msJHlrr8!5e0!3m2!1szh-TW!2stw!4v1744968710441!5m2!1szh-TW!2stw"
-                width="1200"
-                height="500"
-                loading="lazy"
-              ></iframe>
-            </div>
+      </div>
+      {/* Location section */}
+      <div className="flex flex-col">
+        <div className="p-8 md:p-16">
+          <SectionTitle titleText="交通位置" />
+          <div className="flex justify-center my-8">
+            <iframe
+              title="location"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3653.0652872841893!2d120.41951677556327!3d23.70936247869836!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346eb19a93072973%3A0x4fea993fcaeb3e9e!2z5q2HU2hpZSBWaUxMQS3pm7LmnpfljIXmo5_msJHlrr8!5e0!3m2!1szh-TW!2stw!4v1744968710441!5m2!1szh-TW!2stw"
+              width="1200"
+              height="500"
+              loading="lazy"
+            ></iframe>
           </div>
         </div>
       </div>
