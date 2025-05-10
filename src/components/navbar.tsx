@@ -7,10 +7,6 @@ import { useLocation } from '@reach/router';
 
 const menuList = [
   {
-    linkTo: '/news',
-    title: '最新消息',
-  },
-  {
     linkTo: '/about',
     title: '關於我們',
   },
@@ -25,6 +21,10 @@ const menuList = [
   {
     linkTo: '/information',
     title: '訂房須知',
+  },
+  {
+    linkTo: '/news',
+    title: '最新消息',
   },
   {
     linkTo: '/contact',
