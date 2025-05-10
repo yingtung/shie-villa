@@ -167,8 +167,103 @@ const IndexPage: React.FC<IndexPageProps> = ({ data }) => {
           <h2 className="text-white overline">雲林虎尾包棟住宿首選</h2>
         </div>
       </div>
+
+      {/* About section */}
+      <div className="flex flex-col md:flex-row ">
+        <div className="p-8 md:p-16 md:basis-1/2">
+          <StaticImage
+            src="../images/dinningTable.jpg"
+            alt="歇Shie Villa 民宿"
+            className="border-(--border-color) border-base"
+          />
+        </div>
+        <div className="p-8 md:p-16 md:basis-1/2 self-center">
+          <SectionTitle titleText="關於歇Shie Villa" />
+          <h2 className="text-[#114b5f] my-8 text-center">
+            獨棟｜別墅｜庭院｜歡唱
+          </h2>
+          <p className="my-8">
+            歇Shie Villa，提供可容納 28
+            人的整棟包棟住宿，打造全然專屬的團聚時光。在您忙碌的生活中，歇Shie
+            Villa
+            是讓您徹底放鬆身心、充電再出發的寧靜空間。盡情享受泳池的清涼、卡拉
+            OK 的歡唱，以及為親子家庭準備的遊樂空間。在歇Shie Villa
+            歇息後，再次充滿能量，迎接生活中的美好！
+          </p>
+          <div className="flex justify-center">
+            <ViewMoreButton linkTo="/about" />
+          </div>
+        </div>
+      </div>
+      {/* Rooms section */}
+      <div className="flex flex-col md:flex-row min-h-120 items-center  bg-(--background-color)">
+        <div className="p-8 md:p-16 md:basis-1/2 self-center">
+          <SectionTitle titleText="精選房型" />
+          <p className="my-8">
+            我們共有六間精心設計的客房，包含四間寬敞的四人房，以及兩間溫馨的雙人房。特別的是，我們的雙人房皆設有舒適的閣樓空間，可依您的需求加床，非常適合情侶、朋友或小型家庭入住。無論您是哪種旅行組合，都能在歇
+            Villa 找到最適合您的休憩空間。
+          </p>
+          <div className="flex justify-center">
+            <ViewMoreButton linkTo="/rooms" />
+          </div>
+        </div>
+        <div className="p-8 md:p-16 md:basis-1/2 md:order-last order-first">
+          <Carousel autoplay autoplayInterval={5000} height={95}>
+            {rooms.map((room) => {
+              const roomImg = getImage(room.images[0]?.asset.gatsbyImageData);
+              return (
+                roomImg && (
+                  <GatsbyImage
+                    image={roomImg}
+                    alt={room.slug.current}
+                    className="w-full h-full md:h-95 object-cover"
+                    imgStyle={{ objectPosition: 'center' }}
+                  />
+                )
+              );
+            })}
+          </Carousel>
+        </div>
+      </div>
+      {/* Facilities section */}
+      <div className="flex flex-col ">
+        <div className="p-8 md:p-16">
+          <SectionTitle titleText="民宿設施" />
+          <div className="flex flex-col md:flex-row justify-spaces my-8">
+            {facilities.map((facility, index) => {
+              const image = getImage(facility.image?.asset.gatsbyImageData);
+
+              return (
+                <div className="p-4 flex-1 flex flex-col">
+                  <h2
+                    className={`text-center my-2 ${index % 2 === 0 ? 'md:order-first order-last' : 'order-last'}`}
+                  >
+                    {facility.name}
+                  </h2>
+                  {image && (
+                    <GatsbyImage
+                      image={image}
+                      alt={facility.slug.current}
+                      imgStyle={{ objectPosition: 'center' }}
+                      className={
+                        'x-full h-full object-cover border-base border-[#ef6f6c]'
+                      }
+                    />
+                  )}
+                </div>
+              );
+            })}
+          </div>
+          <div className="flex justify-center py-8">
+            <ViewMoreButton linkTo="/facilities" />
+          </div>
+        </div>
+      </div>
       {/* News section */}
-      <div id="news-section" className="flex flex-row justify-center w-full">
+      <div
+        id="news-section"
+        className="flex flex-row justify-center w-full bg-(--background-color)"
+      >
         <div className="p-8 md:p-16 w-full">
           <SectionTitle titleText="最新消息" />
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 my-8 place-items-center">
@@ -206,99 +301,8 @@ const IndexPage: React.FC<IndexPageProps> = ({ data }) => {
           </div>
         </div>
       </div>
-      {/* About section */}
-      <div className="flex flex-col md:flex-row  bg-(--background-color)">
-        <div className="p-8 md:p-16 md:basis-1/2">
-          <StaticImage
-            src="../images/dinningTable.jpg"
-            alt="歇Shie Villa 民宿"
-            className="border-(--border-color) border-base"
-          />
-        </div>
-        <div className="p-8 md:p-16 md:basis-1/2 self-center">
-          <SectionTitle titleText="關於歇Shie Villa" />
-          <h2 className="text-[#114b5f] my-8 text-center">
-            獨棟｜別墅｜庭院｜歡唱
-          </h2>
-          <p className="my-8">
-            歇Shie Villa，提供可容納 28
-            人的整棟包棟住宿，打造全然專屬的團聚時光。在您忙碌的生活中，歇Shie
-            Villa
-            是讓您徹底放鬆身心、充電再出發的寧靜空間。盡情享受泳池的清涼、卡拉
-            OK 的歡唱，以及為親子家庭準備的遊樂空間。在歇Shie Villa
-            歇息後，再次充滿能量，迎接生活中的美好！
-          </p>
-          <div className="flex justify-center">
-            <ViewMoreButton linkTo="/about" />
-          </div>
-        </div>
-      </div>
-      {/* Rooms section */}
-      <div className="flex flex-col md:flex-row min-h-120 items-center">
-        <div className="p-8 md:p-16 md:basis-1/2 self-center">
-          <SectionTitle titleText="精選房型" />
-          <p className="my-8">
-            我們共有六間精心設計的客房，包含四間寬敞的四人房，以及兩間溫馨的雙人房。特別的是，我們的雙人房皆設有舒適的閣樓空間，可依您的需求加床，非常適合情侶、朋友或小型家庭入住。無論您是哪種旅行組合，都能在歇
-            Villa 找到最適合您的休憩空間。
-          </p>
-          <div className="flex justify-center">
-            <ViewMoreButton linkTo="/rooms" />
-          </div>
-        </div>
-        <div className="p-8 md:p-16 md:basis-1/2 md:order-last order-first">
-          <Carousel autoplay autoplayInterval={5000} height={95}>
-            {rooms.map((room) => {
-              const roomImg = getImage(room.images[0]?.asset.gatsbyImageData);
-              return (
-                roomImg && (
-                  <GatsbyImage
-                    image={roomImg}
-                    alt={room.slug.current}
-                    className="w-full h-full md:h-95 object-cover"
-                    imgStyle={{ objectPosition: 'center' }}
-                  />
-                )
-              );
-            })}
-          </Carousel>
-        </div>
-      </div>
-      {/* Facilities section */}
-      <div className="flex flex-col bg-(--background-color)">
-        <div className="p-8 md:p-16">
-          <SectionTitle titleText="民宿設施" />
-          <div className="flex flex-col md:flex-row justify-spaces my-8">
-            {facilities.map((facility, index) => {
-              const image = getImage(facility.image?.asset.gatsbyImageData);
-
-              return (
-                <div className="p-4 flex-1 flex flex-col">
-                  <h2
-                    className={`text-center my-2 ${index % 2 === 0 ? 'md:order-first order-last' : 'order-last'}`}
-                  >
-                    {facility.name}
-                  </h2>
-                  {image && (
-                    <GatsbyImage
-                      image={image}
-                      alt={facility.slug.current}
-                      imgStyle={{ objectPosition: 'center' }}
-                      className={
-                        'x-full h-full object-cover border-base border-[#ef6f6c]'
-                      }
-                    />
-                  )}
-                </div>
-              );
-            })}
-          </div>
-          <div className="flex justify-center py-8">
-            <ViewMoreButton linkTo="/facilities" />
-          </div>
-        </div>
-      </div>
       {/* Location section */}
-      <div className="flex flex-col">
+      <div className="flex flex-col ">
         <div className="p-8 md:p-16">
           <SectionTitle titleText="交通位置" />
           <div className="flex justify-center my-8">
