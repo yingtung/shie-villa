@@ -29,7 +29,10 @@ interface NewsPageProps extends PageProps {
 const PAGE_TITLE = '最新消息';
 export const query = graphql`
   query {
-    allSanityNews(sort: { publishedAt: DESC }) {
+    allSanityNews(
+      sort: { publishedAt: DESC }
+      filter: { hidden: { eq: false } }
+    ) {
       nodes {
         id
         title
