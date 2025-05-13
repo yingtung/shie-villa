@@ -6,7 +6,7 @@ import Banner from '../components/banner';
 import { SEO } from '../components/seo';
 export const query = graphql`
   query {
-    allSanityFacility(sort: { order: ASC }) {
+    allSanityFacility(sort: { order: ASC }, filter: { hidden: { eq: false } }) {
       nodes {
         name
         slug {
