@@ -91,7 +91,7 @@ const AboutPage: React.FC<AboutPageProps> = ({ data }) => {
                   <br />
                   在戶外遊樂區溜滑梯、攀爬，在沙坑裡發揮創意，
                   <br />
-                  晚上還能一起歡唱卡拉 OK、玩桌遊。
+                  晚上還能一起打麻將、玩桌遊。
                   <br />
                   在這裡孩子們能盡情玩耍，
                   <br />
