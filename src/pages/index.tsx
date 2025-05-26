@@ -307,7 +307,7 @@ const IndexPage: React.FC<IndexPageProps> = ({ data }) => {
           <div className="flex justify-center my-8">
             <iframe
               title="location"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3653.0652872841893!2d120.41951677556327!3d23.70936247869836!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346eb19a93072973%3A0x4fea993fcaeb3e9e!2z5q2HU2hpZSBWaUxMQS3pm7LmnpfljIXmo5_msJHlrr8!5e0!3m2!1szh-TW!2stw!4v1744968710441!5m2!1szh-TW!2stw"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3653.0674544994113!2d120.41938747556323!3d23.709285078698436!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346eb1b09224a23b%3A0x64dd24b4ed442949!2z5q2HU2hpZSBWaUxMQS3pm7LmnpfljIXmo5_msJHlrr8!5e0!3m2!1szh-TW!2stw!4v1748241151028!5m2!1szh-TW!2stw"
               width="1200"
               height="500"
               loading="lazy"
