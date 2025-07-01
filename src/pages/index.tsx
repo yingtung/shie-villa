@@ -289,7 +289,7 @@ const IndexPage: React.FC<IndexPageProps> = ({ data }) => {
                       {n.title}
                     </h3>
                     <p className="text-sm mb-2">{formatDate(n.publishedAt)}</p>
-                    <p className="text-sm line-clamp-2">{n.excerpt}</p>
+                    <p className="line-clamp-4">{n.excerpt}</p>
                   </div>
                 </Link>
               );

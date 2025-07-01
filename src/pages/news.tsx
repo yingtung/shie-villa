@@ -89,7 +89,7 @@ const NewsPage: React.FC<NewsPageProps> = ({ data }) => {
                       {n.title}
                     </h3>
                     <p className="text-sm mb-3">{formatDate(n.publishedAt)}</p>
-                    <p className="line-clamp-3">{n.excerpt}</p>
+                    <p className="line-clamp-4">{n.excerpt}</p>
                   </div>
                 </Link>
               );
