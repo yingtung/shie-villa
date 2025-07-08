@@ -13,6 +13,9 @@ const Banner: React.FC<BannerProps> = ({ titleText }) => {
         alt="Banner image"
         className="w-full h-full"
         objectFit="cover"
+        imgStyle={{
+          objectPosition: '50% 55%',
+        }}
       />
 
       <div className="absolute inset-0 flex items-center justify-center">
