@@ -94,7 +94,11 @@ export const query = graphql`
         }
       }
     }
-    allSanityNews(sort: { publishedAt: DESC }, limit: 3) {
+    allSanityNews(
+      sort: { publishedAt: DESC }
+      filter: { hidden: { eq: false } }
+      limit: 3
+    ) {
       nodes {
         id
         title
