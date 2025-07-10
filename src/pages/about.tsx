@@ -27,7 +27,7 @@ const AboutPage: React.FC<AboutPageProps> = ({ data }) => {
           <div className="space-y-10">
             <div className="text-center">
               <h2 className="text-3xl font-bold mb-6">
-                歡迎來到歇Shie Villa，您的「歇腳」之地
+                歡迎來到歇Shie Villa，來這歇一會兒
               </h2>
               <p className="text-md leading-relaxed">
                 我們深知在忙碌喧囂的城市生活中，片刻的寧靜與放鬆是如此珍貴。
