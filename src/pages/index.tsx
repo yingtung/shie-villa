@@ -130,8 +130,8 @@ const SectionTitle: React.FC<{ titleText: string }> = ({ titleText }) => {
   );
 };
 
-const scrollToNews = () => {
-  const aboutSection = document.getElementById('news-section');
+const scrollToFirstSection = () => {
+  const aboutSection = document.getElementById('first-section');
   const navbar = document.querySelector('nav');
   const navbarHeight = navbar ? navbar.offsetHeight : 0;
 
@@ -164,7 +164,7 @@ const IndexPage: React.FC<IndexPageProps> = ({ data }) => {
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center">
           <h1
             className="text-white text-5xl md:text-6xl font-bold mb-4 cursor-pointer hover:opacity-80 transition-opacity"
-            onClick={scrollToNews}
+            onClick={scrollToFirstSection}
           >
             歇Shie Villa
           </h1>
@@ -173,7 +173,7 @@ const IndexPage: React.FC<IndexPageProps> = ({ data }) => {
       </div>
 
       {/* About section */}
-      <div className="flex flex-col md:flex-row ">
+      <div id="first-section" className="flex flex-col md:flex-row ">
         <div className="p-8 md:p-16 md:basis-1/2">
           <StaticImage
             src="../images/dinningTable.jpg"
@@ -263,10 +263,7 @@ const IndexPage: React.FC<IndexPageProps> = ({ data }) => {
         </div>
       </div>
       {/* News section */}
-      <div
-        id="news-section"
-        className="flex flex-row justify-center w-full bg-(--background-color)"
-      >
+      <div className="flex flex-row justify-center w-full bg-(--background-color)">
         <div className="p-8 md:p-16 w-full">
           <SectionTitle titleText="最新消息" />
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 my-8 place-items-center">
