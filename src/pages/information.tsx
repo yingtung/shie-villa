@@ -1,18 +1,41 @@
-import type { HeadFC, PageProps } from 'gatsby';
+import { graphql, type HeadFC, type PageProps } from 'gatsby';
 import React from 'react';
 import Layout from '../components/layout';
 import Banner from '../components/banner';
 import { Tab, TabGroup, TabList, TabPanel, TabPanels } from '@headlessui/react';
 import { SEO } from '../components/seo';
-
+import { PortableText } from '@portabletext/react';
+import components from '../components/protableTextComponents';
+interface InformationPageProps extends PageProps {
+  data: {
+    allSanityRegulation: {
+      nodes: {
+        title: string;
+        _rawContent: any;
+      }[];
+    };
+  };
+}
 const tabMenu = [
-  { key: 'tab1', title: '入/退住須知' },
+  { key: 'tab1', title: '住宿須知' },
   { key: 'tab2', title: '訂房方式' },
   { key: 'tab3', title: '匯款資訊' },
   { key: 'tab4', title: '取消或延期' },
 ];
 const PAGE_TITLE = '訂房須知';
-const InformationPage: React.FC<PageProps> = () => {
+
+export const query = graphql`
+  query {
+    allSanityRegulation(sort: { order: ASC }) {
+      nodes {
+        title
+        _rawContent
+      }
+    }
+  }
+`;
+const InformationPage: React.FC<InformationPageProps> = ({ data }) => {
+  const regulations = data.allSanityRegulation.nodes;
   return (
     <Layout>
       <div>
@@ -39,75 +62,17 @@ const InformationPage: React.FC<PageProps> = () => {
               </TabList>
               <TabPanels>
                 <TabPanel>
-                  {/* 入住須知 */}
-                  <div className="py-2">
-                    <h1>入住須知</h1>
-                    <ul className="list-disc list-outside">
-                      <li>
-                        入住時間：當日 15:00~20:00，請於入住前 30 分鐘告知。
-                        <b className="underline">
-                          入住時請出示身分證件並匯款全額住宿費用
-                        </b>
-                        ，以便辦理入住手續，倘若
-                        <span className="text-(--color-dangerous)">
-                          晚上八點過後才辦理入住，需加500元(每小時)
-                        </span>
-                        。
-                      </li>
-                      <li>
-                        提早入住服務：可於中午十二點先至民宿辦理入住手續，並搶先體驗我們豐富的戶外設施，待下午三點後房務人員完成房間的清潔與消毒工作，即可正式入住。
-                      </li>
-                      <li>
-                        本民宿為親子友善空間，提供一張嬰兒床、兩個澡盆、一台溫奶器、一台消毒鍋及兩張兒童餐椅使用。
-                      </li>
-                      <li>
-                        提供零食車(含飲品、泡麵及餅乾，不固定的數量提供)，不供三餐
-                      </li>
-                      <li className="underline">
-                        如需加備品棉被，需酌收清潔費。
-                      </li>
-                      <li>
-                        續住的旅客，本民宿不提供打掃清潔、不換床單等備品。
-                      </li>
-                      <li>
-                        配合政府政策，響應環保，不主動提供個人衛生用品(如：牙刷、牙膏、大浴巾、小毛巾及一次性使用備品，皆不提供)。
-                      </li>
-                      <li>
-                        本民宿包棟入住平日最低人數為10人，一天只接待一組客人；臨時變更增加入住的人數或無法遵守以上規定，恕我們無法接待。
-                      </li>
-                      <li>
-                        如要攜帶寵物，須提前告知且獲得民宿方同意，並
-                        <b>已匯款「額外收取押金二萬元」</b>
-                        ，方可攜帶寵物，寵物請勿任意放養、禁止進入戲水池、沙坑及民宿住宿室內空間。
-                      </li>
-                      <li>
-                        如有特殊需求請先告知(例如：寄放行李或延後退房)，本民宿竭誠為每位旅客熱誠服務。
-                      </li>
-                    </ul>
-                  </div>
-                  <div className="py-2">
-                    <h1>退房須知</h1>
-                    <ul className="list-disc list-outside">
-                      <li>
-                        退房時間：隔日 11:00前(
-                        <b>退房時，務必請交還房門及大門鑰匙</b>
-                        )，倘若
-                        <span className="text-(--color-dangerous)">
-                          延後退房，需加500元(每小時)
-                        </span>
-                        。
-                      </li>
-                      <li>
-                        屋内之傢俱、電器、擺設、器具系列等皆為本民宿之財產，上列物品如有折損或遺失，敬請照價賠償，並請勿任意移動室內擺設(如床舖、電視、展示櫃內物品等)。
-                      </li>
-                      <li>
-                        等待房務人員打掃清潔完畢，確認沒有損壞及違規事項後，會將押金兩萬元退還至您指定的帳戶
-                      </li>
-                      <li>
-                        個人貴重物品，請自行妥善保管，如有遺失，恕不負責，敬請見諒。
-                      </li>
-                    </ul>
-                  </div>
+                  {regulations.map((regulation) => {
+                    return (
+                      <div className="py-4">
+                        <h1>{regulation.title}</h1>
+                        <PortableText
+                          value={regulation._rawContent}
+                          components={components}
+                        />
+                      </div>
+                    );
+                  })}
                 </TabPanel>
                 <TabPanel>
                   {/* 訂房方式 */}

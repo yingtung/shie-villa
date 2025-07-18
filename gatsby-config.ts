@@ -4,7 +4,7 @@ require('dotenv').config({});
 const config: GatsbyConfig = {
   siteMetadata: {
     title: '歇Shie Villa民宿 | 雲林虎尾包棟住宿首選',
-    siteUrl: 'https://shie-villa.com',
+    siteUrl: 'https://shievilla.com',
     description:
       '歇Shie Villa，提供可容納 28 人的整棟包棟住宿，打造全然專屬的團聚時光。在您忙碌的生活中，歇Shie Villa 是讓您徹底放鬆身心、充電再出發的寧靜空間。盡情享受泳池的清涼、卡拉 OK 的歡唱，以及為親子家庭準備的遊樂空間。在歇Shie Villa 歇息後，再次充滿能量，迎接生活中的美好！',
     image: '/icon.jpg',
