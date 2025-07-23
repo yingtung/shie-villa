@@ -93,18 +93,17 @@ const Navbar: React.FC = () => {
       >
         <div className="fixed inset-0 z-10" />
         <DialogPanel className="mobile-menu fixed inset-y-0 right-0 z-10 w-full overflow-y-auto px-6 py-6 sm:max-w-sm sm:ring-1">
-          <div className="flex items-center justify-between">
-            <a href="/" className="-m-1.5 p-1.5">
-              <span className="sr-only">Shie Villa</span>
-              <img alt="icon" src={Logo} className="h-8 w-auto" />
-            </a>
+          <div className="flex items-center justify-end">
             <button
               type="button"
               onClick={() => setMobileMenuOpen(false)}
-              className="-m-2.5 rounded-md p-2.5 text-gray-700"
+              className="-m-2.5 rounded-md p-2.5 text-gray-700 bg-(--color-primary) "
             >
               <span className="sr-only">Close menu</span>
-              <XMarkIcon aria-hidden="true" className="size-8 text-white" />
+              <XMarkIcon
+                aria-hidden="true"
+                className="size-8 text-transparent"
+              />
             </button>
           </div>
           <div className="mt-6 flow-root">
