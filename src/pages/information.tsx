@@ -122,7 +122,7 @@ const InformationPage: React.FC<InformationPageProps> = ({ data }) => {
                       </li>
                       <li>
                         入住付款： 抵達民宿辦理入住時，請以<b>轉帳匯款</b>
-                        方式支付剩餘的全額住宿費用。貼心提醒：本民宿不收現金、也不接受信用卡付款方式。
+                        方式支付全額住宿費用。貼心提醒：本民宿不收現金、也不接受信用卡付款方式。
                       </li>
                     </ul>
                   </div>
@@ -156,7 +156,7 @@ const InformationPage: React.FC<InformationPageProps> = ({ data }) => {
                       <ul className="list-decimal list-outside">
                         <li>
                           訂金金額為<b>兩萬塊</b>
-                          .並私訊官方帳號告知帳號末五碼，以便查核，我們將為您保留訂房。
+                          並私訊官方帳號告知帳號末五碼，以便查核，我們將為您保留訂房。
                         </li>
                         <li>
                           本民宿不收現金、不使用信用卡付款方式，入住時請以
