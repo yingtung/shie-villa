@@ -187,7 +187,7 @@ const IndexPage: React.FC<IndexPageProps> = ({ data }) => {
             獨棟｜別墅｜庭院｜歡唱
           </h2>
           <p className="my-8">
-            歇Shie Villa，提供可容納 28
+            歇Shie Villa，提供可容納 26
             人的整棟包棟住宿，打造全然專屬的團聚時光。在您忙碌的生活中，歇Shie
             Villa
             是讓您徹底放鬆身心、充電再出發的寧靜空間。盡情享受泳池的清涼、桌遊與麻將的樂趣，以及為親子家庭準備的遊樂空間。在歇Shie
