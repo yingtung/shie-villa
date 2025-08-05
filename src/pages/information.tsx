@@ -1,11 +1,12 @@
 import { graphql, type HeadFC, type PageProps } from 'gatsby';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Layout from '../components/layout';
 import Banner from '../components/banner';
 import { Tab, TabGroup, TabList, TabPanel, TabPanels } from '@headlessui/react';
 import { SEO } from '../components/seo';
 import { PortableText } from '@portabletext/react';
 import components from '../components/protableTextComponents';
+
 interface InformationPageProps extends PageProps {
   data: {
     allSanityRegulation: {
@@ -16,12 +17,14 @@ interface InformationPageProps extends PageProps {
     };
   };
 }
+
 const tabMenu = [
-  { key: 'tab1', title: '住宿須知' },
-  { key: 'tab2', title: '訂房方式' },
-  { key: 'tab3', title: '匯款資訊' },
-  { key: 'tab4', title: '取消或延期' },
+  { key: 'tab1', title: '查詢訂房日期', hash: 'available-date' },
+  { key: 'tab2', title: '住宿須知', hash: 'regulation' },
+  { key: 'tab3', title: '匯款資訊', hash: 'payment' },
+  { key: 'tab4', title: '取消或延期', hash: 'cancel-or-delay' },
 ];
+
 const PAGE_TITLE = '訂房須知';
 
 export const query = graphql`
@@ -34,8 +37,50 @@ export const query = graphql`
     }
   }
 `;
+
 const InformationPage: React.FC<InformationPageProps> = ({ data }) => {
   const regulations = data.allSanityRegulation.nodes;
+
+  // 根據URL hash決定初始選中的tab
+  const getInitialSelectedIndex = () => {
+    if (typeof window !== 'undefined') {
+      const hash = window.location.hash.replace('#', '');
+      const index = tabMenu.findIndex((tab) => tab.hash === hash);
+      return index >= 0 ? index : 0;
+    }
+    return 0;
+  };
+
+  const [selectedIndex, setSelectedIndex] = useState(getInitialSelectedIndex);
+
+  // 監聽URL hash變化
+  useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash.replace('#', '');
+      const index = tabMenu.findIndex((tab) => tab.hash === hash);
+      if (index >= 0) {
+        setSelectedIndex(index);
+      }
+    };
+
+    // 監聽hashchange事件
+    window.addEventListener('hashchange', handleHashChange);
+
+    // 初始化時檢查hash
+    handleHashChange();
+
+    return () => {
+      window.removeEventListener('hashchange', handleHashChange);
+    };
+  }, []);
+
+  // 處理tab切換
+  const handleTabChange = (index: number) => {
+    setSelectedIndex(index);
+    const hash = tabMenu[index].hash;
+    window.location.hash = hash;
+  };
+
   return (
     <Layout>
       <div>
@@ -43,7 +88,7 @@ const InformationPage: React.FC<InformationPageProps> = ({ data }) => {
           {/* Banner Section */}
           <Banner titleText={PAGE_TITLE} />
           <div className="max-w-6xl mx-auto px-6 py-16">
-            <TabGroup>
+            <TabGroup selectedIndex={selectedIndex} onChange={handleTabChange}>
               <TabList className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 justify-center">
                 {tabMenu.map(({ key, title }) => {
                   return (
@@ -61,36 +106,36 @@ const InformationPage: React.FC<InformationPageProps> = ({ data }) => {
                 })}
               </TabList>
               <TabPanels>
-                <TabPanel>
-                  {regulations.map((regulation) => {
-                    return (
-                      <div className="py-4">
-                        <h1>{regulation.title}</h1>
-                        <PortableText
-                          value={regulation._rawContent}
-                          components={components}
-                        />
-                      </div>
-                    );
-                  })}
-                </TabPanel>
-                <TabPanel>
+                <TabPanel id="calendar">
                   {/* 訂房方式 */}
                   <div className="py-4">
+                    <div className="flex flex-col justify-center">
+                      <h1>查詢訂房日期</h1>
+                      <p className="py-2">
+                        未標示"已預訂"的日期皆可私訊小編預約
+                      </p>
+                      <iframe
+                        title="calendar"
+                        src="https://calendar.google.com/calendar/embed?height=600&wkst=2&ctz=Asia%2FTaipei&showPrint=0&showTabs=0&showCalendars=0&showTz=0&title=%E6%AD%87%E6%B0%91%E5%AE%BF%E5%8F%AF%E9%A0%90%E8%A8%82%E6%99%82%E9%96%93&showTitle=0&showNav=1&src=ZDczZjQ0MjYzODQ5YjZlMjdjOWQxMmViYmMxNzRhNGQwZGViMzhiNmU2NzliZTI4YWVjZTQ0M2Q1MGNlMmY2MUBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&color=%23C0CA33"
+                        className="mb-8 mt-4 border-base"
+                        // width="800"
+                        height="600"
+                      ></iframe>
+                    </div>
                     <h1>訂房方式 </h1>
                     <ul className="list-decimal list-outside">
                       <li>
                         查詢空房： 請先參考，
                         <a
-                          href="#available-date"
+                          href="#calendar"
                           className="text-(--color-highlight)"
                         >
-                          下方行事曆
+                          上方行事曆
                         </a>
                         確認您欲入住的日期是否可預訂。
                       </li>
                       <li>
-                        聯繫訂房： 透過我們的{' '}
+                        聯繫訂房： 透過我們的
                         <a
                           href="https://www.facebook.com/profile.php?id=61570093144442"
                           target="_blank"
@@ -126,20 +171,19 @@ const InformationPage: React.FC<InformationPageProps> = ({ data }) => {
                       </li>
                     </ul>
                   </div>
-                  <div
-                    className="py-4 flex flex-col justify-center"
-                    id="available-date"
-                  >
-                    <h1>可預約日期</h1>
-                    <p className="py-2">未標示“已預訂”的日期皆可私訊小編預約</p>
-                    <iframe
-                      title="calendar"
-                      src="https://calendar.google.com/calendar/embed?height=600&wkst=2&ctz=Asia%2FTaipei&showPrint=0&showTabs=0&showCalendars=0&showTz=0&title=%E6%AD%87%E6%B0%91%E5%AE%BF%E5%8F%AF%E9%A0%90%E8%A8%82%E6%99%82%E9%96%93&showTitle=0&showNav=1&src=ZDczZjQ0MjYzODQ5YjZlMjdjOWQxMmViYmMxNzRhNGQwZGViMzhiNmU2NzliZTI4YWVjZTQ0M2Q1MGNlMmY2MUBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&color=%23C0CA33"
-                      className="mb-16 mt-4 border-base"
-                      // width="800"
-                      height="600"
-                    ></iframe>
-                  </div>
+                </TabPanel>
+                <TabPanel>
+                  {regulations.map((regulation) => {
+                    return (
+                      <div className="py-4">
+                        <h1>{regulation.title}</h1>
+                        <PortableText
+                          value={regulation._rawContent}
+                          components={components}
+                        />
+                      </div>
+                    );
+                  })}
                 </TabPanel>
                 <TabPanel>
                   {/* 匯款資訊 */}
