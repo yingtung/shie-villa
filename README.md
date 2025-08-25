@@ -2,6 +2,12 @@
   Shie Villa Official Website
 </h1>
 
+## Teck Stack
+- Framework: Gastby
+- Frontend library: React 18
+- Styling: TailwindCSS 4
+- CMS: Sanity
+- Deployment: Netlify
 ## 🚀 Quick start
 
 1.  **Start developing.**
@@ -13,7 +19,7 @@
     npm run develop
     ```
 
-2.  **Learn more**
+2.  **Build for production**
 
     - [Documentation](https://www.gatsbyjs.com/docs/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
     - [Tutorials](https://www.gatsbyjs.com/docs/tutorial/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
