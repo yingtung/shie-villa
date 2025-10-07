@@ -6,6 +6,7 @@ import { Tab, TabGroup, TabList, TabPanel, TabPanels } from '@headlessui/react';
 import { SEO } from '../components/seo';
 import { PortableText } from '@portabletext/react';
 import components from '../components/protableTextComponents';
+import ReservationCalendar from '../components/reservationCalendar';
 
 interface InformationPageProps extends PageProps {
   data: {
@@ -111,16 +112,7 @@ const InformationPage: React.FC<InformationPageProps> = ({ data }) => {
                   <div className="py-4">
                     <div className="flex flex-col justify-center">
                       <h1>查詢訂房日期</h1>
-                      <p className="py-2">
-                        未標示"已預訂"的日期皆可私訊小編預約
-                      </p>
-                      <iframe
-                        title="calendar"
-                        src="https://calendar.google.com/calendar/embed?height=600&wkst=2&ctz=Asia%2FTaipei&showPrint=0&showTabs=0&showCalendars=0&showTz=0&title=%E6%AD%87%E6%B0%91%E5%AE%BF%E5%8F%AF%E9%A0%90%E8%A8%82%E6%99%82%E9%96%93&showTitle=0&showNav=1&src=ZDczZjQ0MjYzODQ5YjZlMjdjOWQxMmViYmMxNzRhNGQwZGViMzhiNmU2NzliZTI4YWVjZTQ0M2Q1MGNlMmY2MUBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&color=%23C0CA33"
-                        className="mb-8 mt-4 border-base"
-                        // width="800"
-                        height="600"
-                      ></iframe>
+                      <ReservationCalendar className="mb-8 mt-4 border-base" />
                     </div>
                     <h1>訂房方式 </h1>
                     <ul className="list-decimal list-outside">
