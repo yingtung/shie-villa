@@ -29,7 +29,7 @@ export function useYearCalendarEvents(): UseCalendarEventsResult {
       // 到一年後的月份最後一天
       const endDate = new Date(
         today.getFullYear() + 1,
-        today.getMonth() + 1,
+        today.getMonth(),
         0,
         23,
         59,

@@ -72,6 +72,16 @@ export async function getCalendarEvents(
 }
 
 /**
+ * 解析日期字串為本地時區的 Date 物件
+ * @param dateString - YYYY-MM-DD 格式的日期字串
+ * @returns Date 物件（本地時區午夜）
+ */
+function parseLocalDate(dateString: string): Date {
+  const [year, month, day] = dateString.split('-').map(Number);
+  return new Date(year, month - 1, day);
+}
+
+/**
  * 檢查特定日期是否已被預訂
  * @param date - 要檢查的日期 (YYYY-MM-DD 格式)
  * @param events - 日曆事件陣列
@@ -81,10 +91,48 @@ export function isDateBooked(
   checkDate: Date,
   events: CalendarEvent[],
 ): boolean {
+  // Normalize checkDate to midnight for consistent comparison
+  const normalizedCheckDate = new Date(
+    checkDate.getFullYear(),
+    checkDate.getMonth(),
+    checkDate.getDate(),
+  );
+
   return events.some((event) => {
-    const eventStart = new Date(event.start.date || event.start.dateTime || '');
-    const eventEnd = new Date(event.end.date || event.end.dateTime || '');
-    return eventStart <= checkDate && eventEnd > checkDate;
+    let eventStart: Date;
+    let eventEnd: Date;
+
+    // Parse dates based on whether they're all-day events or timed events
+    if (event.start.date) {
+      // All-day event: parse as local date
+      eventStart = parseLocalDate(event.start.date);
+    } else {
+      // Timed event: parse ISO string and normalize to midnight
+      eventStart = new Date(event.start.dateTime || '');
+      eventStart = new Date(
+        eventStart.getFullYear(),
+        eventStart.getMonth(),
+        eventStart.getDate(),
+      );
+    }
+
+    if (event.end.date) {
+      // All-day event: parse as local date
+      eventEnd = parseLocalDate(event.end.date);
+      // For all-day events, end.date is exclusive (next day after event ends)
+      // So we need to subtract 1 day to get the actual last day of the event
+      eventEnd.setDate(eventEnd.getDate() - 1);
+    } else {
+      // Timed event: parse ISO string and normalize to midnight
+      eventEnd = new Date(event.end.dateTime || '');
+      eventEnd = new Date(
+        eventEnd.getFullYear(),
+        eventEnd.getMonth(),
+        eventEnd.getDate(),
+      );
+    }
+
+    return eventStart <= normalizedCheckDate && eventEnd >= normalizedCheckDate;
   });
 }
 

@@ -93,7 +93,7 @@ const ReservationCalendar: React.FC<ReservationCalendarProps> = ({
 
     // 填充日期
     for (let day = 1; day <= daysInMonth; day++) {
-      const date = new Date(currentYear, currentMonth, day, 12);
+      const date = new Date(currentYear, currentMonth, day);
       const isToday = date.toDateString() === today.toDateString();
       const isPast = !isToday && date < today;
       const booked = !isPast && isDateBooked(date, events);
