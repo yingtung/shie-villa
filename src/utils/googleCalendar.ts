@@ -84,7 +84,7 @@ export function isDateBooked(
   return events.some((event) => {
     const eventStart = new Date(event.start.date || event.start.dateTime || '');
     const eventEnd = new Date(event.end.date || event.end.dateTime || '');
-    return eventStart <= checkDate && eventEnd >= checkDate;
+    return eventStart <= checkDate && eventEnd > checkDate;
   });
 }
 

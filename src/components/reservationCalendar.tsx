@@ -93,15 +93,18 @@ const ReservationCalendar: React.FC<ReservationCalendarProps> = ({
 
     // 填充日期
     for (let day = 1; day <= daysInMonth; day++) {
-      const date = new Date(currentYear, currentMonth, day,12);
+      const date = new Date(currentYear, currentMonth, day, 12);
       const isToday = date.toDateString() === today.toDateString();
-      const booked = isDateBooked(date, events);
+      const isPast = !isToday && date < today;
+      const booked = !isPast && isDateBooked(date, events);
 
       let dayClasses =
         'aspect-auto p-4 border border-gray-200 flex flex-col items-center justify-center';
 
-      if (booked) {
-        dayClasses += ' bg-gray-300 text-white text-lg';
+      if (isPast) {
+        dayClasses += ' bg-gray-200 text-white text-lg';
+      } else if (booked) {
+        dayClasses += ' bg-gray-400 text-white text-lg';
       } else {
         dayClasses += ' bg-(--text-color-primary)/80 text-white font-semibold ';
       }
@@ -140,7 +143,7 @@ const ReservationCalendar: React.FC<ReservationCalendarProps> = ({
           <button
             onClick={goToPreviousMonth}
             className={
-              'px-3 py-1 rounded transition-colors bg-(--button-color-secondary) hover:bg-(--button-color-secondary)/80 cursor-pointer'
+              'px-3 py-1 rounded transition-colors bg-(--button-color) hover:bg-(--button-color-secondary) cursor-pointer'
             }
             aria-label="上個月"
           >
@@ -156,7 +159,7 @@ const ReservationCalendar: React.FC<ReservationCalendarProps> = ({
           <button
             onClick={goToNextMonth}
             className={
-              'px-3 py-1 rounded transition-colors bg-(--button-color-secondary) hover:bg-(--button-color-secondary)/80 cursor-pointer'
+              'px-3 py-1 rounded transition-colors bg-(--button-color) hover:bg-(--button-color-secondary) cursor-pointer'
             }
             aria-label="下個月"
           >
@@ -197,8 +200,12 @@ const ReservationCalendar: React.FC<ReservationCalendarProps> = ({
           <span>可預訂</span>
         </div>
         <div className="flex items-center gap-2">
-          <div className="w-4 h-4 bg-gray-300 border border-gray-200"></div>
+          <div className="w-4 h-4 bg-gray-400 border border-gray-200"></div>
           <span>已預訂</span>
+        </div>
+        <div className="flex items-center gap-2">
+          <div className="w-4 h-4 bg-gray-200 border border-gray-200"></div>
+          <span>已過去</span>
         </div>
       </div>
     </div>
