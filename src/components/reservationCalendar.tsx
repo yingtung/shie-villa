@@ -6,7 +6,7 @@ interface ReservationCalendarProps {
   className?: string;
 }
 
-const WEEKDAYS = ['一', '二', '三', '四', '五', '六', '日'];
+const WEEKDAYS = ['日', '一', '二', '三', '四', '五', '六'];
 const MONTHS = [
   '一月',
   '二月',
@@ -38,9 +38,8 @@ const ReservationCalendar: React.FC<ReservationCalendarProps> = ({
   const firstDayOfMonth = new Date(currentYear, currentMonth, 1);
   const lastDayOfMonth = new Date(currentYear, currentMonth + 1, 0);
 
-  // 獲取當月第一天是星期幾，星期天是7
-  const firstDayWeekday =
-    firstDayOfMonth.getDay() === 0 ? 7 : firstDayOfMonth.getDay();
+  // 獲取當月第一天是星期幾，星期天是0
+  const firstDayWeekday = firstDayOfMonth.getDay();
 
   // 獲取當月有多少天
   const daysInMonth = lastDayOfMonth.getDate();
@@ -87,7 +86,7 @@ const ReservationCalendar: React.FC<ReservationCalendarProps> = ({
     const days = [];
 
     // 填充前面的空格
-    for (let i = 1; i < firstDayWeekday; i++) {
+    for (let i = 0; i < firstDayWeekday; i++) {
       days.push(<div key={`empty-${i}`} className="aspect-auto"></div>);
     }
 
